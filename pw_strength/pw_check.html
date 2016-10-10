@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="article" id="articlelink" content="/technology/jquerynews/20120901-jquery-plugin-complexify/" />
+		<title>pw_strength</title>
+		<link rel="stylesheet" href="css/style.css">
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+		<script src="js/jquery.complexify.js"></script>
+		<script src="js/jquery.placeholder.min.js"></script>
+
+		<script>
+			$(function(){
+				$('input[placeholder]').placeholder();
+				$("#password").complexify({}, function(valid, complexity){
+					if (!valid) {
+						$('#complexity').animate({'width':complexity + '%'}).removeClass('valid').addClass('invalid');
+					} else {
+						$('#complexity').animate({'width':complexity + '%'}).removeClass('invalid').addClass('valid');
+					}
+					$('#complexity').html(Math.round(complexity) + '%');
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div id="page-wrap">
+			<div id="title">Password Strength</div>
+			<input type="password" name="password" id="password" placeholder=""/>
+			<div id="complexitywrap">
+			<div id="complexity">0%</div>
+			</div>
+		</div>
+	</body>
+</html>

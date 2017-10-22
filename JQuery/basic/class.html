@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="author" content="Admin">
+    <style type="text/css">
+    .addBg {
+        background: #f00;
+        color: #fff;
+    }
+
+    .bigger {
+        front-size: 20px;
+    }
+    </style>
+    <script type="text/javascript" src="jquery-3.2.0.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        // addClass新增樣式 removeClass移除樣式
+        // $("thead tr").addClass("addBg").addClass("bigger").removeClass("addBg");
+
+        // has是判斷是否存在某個樣式
+        // alert($("thead tr").hasClass("bigger"));
+
+        // 以下代碼為tr添加了兩個事件，鼠標移上去和鼠標移走事件，當移上去的時候，添加樣式，移走的刪除樣式
+        // 為了相對簡單實現第一次做某個操作，第二個事件做某個操作這樣的功能，JQuery提供了
+        // toggleClass()方法 --> 這個方法指的是判斷是否有這個類
+        // $("tbody tr").mouseover(function(){
+        //     $(this).addClass("addBg");
+        // }).mouseout(function(){
+        //     $(this).removeClass("addBg");
+        // });
+        $("tbody tr").mouseover(changeBg).mouseout(changeBg);
+    });
+
+    function changeBg() {
+        $(this).toggleClass("addBg");
+    }
+    </script>
+</head>
+
+<body>
+    <table width="700" border="1" align="center" id="tus"></table>
+    <table width="700" border="1" align="center" id="users">
+        <thead>
+            <tr>
+                <td title="id">用戶標誌</td>
+                <td title="username">用戶姓名</td>
+                <td title="age">用戶年齡</td>
+                <td title="password">用戶密碼</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr id="abc">
+                <td>1</td>
+                <td>呂布</td>
+                <td>23</td>
+                <td>abc123</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>關羽</td>
+                <td>23</td>
+                <td>123abc</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>趙雲</td>
+                <td>25</td>
+                <td>XXX123</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>典偉</td>
+                <td>26</td>
+                <td>123XXX</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>孔明</td>
+                <td>22</td>
+                <td>597XXX</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>

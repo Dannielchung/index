@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>animate demo</title>
+    <style>
+    .selected {
+        background: #f00;
+        color: #fff;
+    }
+    
+    #imgElement {
+        width: 350px;
+    }
+    
+    #content sapn {
+        cursor: pointer;
+    }
+    
+    #movieName {
+        position: relative;
+        top: 50px;
+        border: 1px solid #999;
+        background: #a43;
+        opacity: 0.7;
+        color: #fff;
+    }
+    </style>
+    <script type="text/javascript" src="jquery-3.2.0.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        var index = 0;
+        $("#imgElement img").each(function(n, el) {
+            $("#content").append("<span>" + (n + 1) + "</span>&nbsp;");
+        }).css('display', 'none').filter(":eq(" + (index++) + ")").show();
+        $("#content span").click(function(event) {
+            /* Act on the event */
+            var ele = $(this).html();
+            index = ele - 1;
+            change();
+        });
+        $("#content span:eq(0)").addClass("selected");
+
+        function change() {
+            var img = $("#imgElement img").css('display', 'none').filter(":eq(" + index + ")").fadeIn('slow');
+            $("#movieName").html(img.attr("alt"));
+            $("#content span").removeClass().filter(":eq(" + index + ")").addClass("selected");
+            index++;
+            if (index >= $("#imgElement img").length) {
+                index = 0;
+            }
+        }
+        setInterval(change, 2000);
+    });
+    </script>
+</head>
+
+<body>
+    <div id="content"></div>
+    <div id="imgElement">
+        <div id="movieName">電影名稱</div>
+        <img src="movie/movie01.jpg" alt="美國隊長2" height="500" />
+        <img src="movie/movie02.jpg" alt="雷神索爾" height="500" />
+        <img src="movie/movie03.jpg" alt="復仇者聯盟" height="500" />
+        <img src="movie/movie04.jpg" alt="蟻人" height="500" />
+        <img src="movie/movie05.jpg" alt="奇異博士" height="500" />
+        <img src="movie/movie06.jpg" alt="死恃" height="500" />
+        <img src="movie/movie07.jpg" alt="無敵皓克" height="500" />
+    </div>
+</body>
+
+</html>

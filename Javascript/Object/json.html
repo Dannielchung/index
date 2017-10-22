@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+</head>
+
+<body>
+    <script type="text/javascript">
+    // 用json來表示object
+    var person = {
+        name: "張三",
+        age: 23,
+        say: function() {
+            alert(this.name + "," + this.age);
+        }
+    }
+    person.say();
+    var ps = [{
+        name: "Leon",
+        age: 22
+    }, {
+        name: "Ada",
+        age: 33
+    }];
+    for (var i = 0; i < ps.length; i++) {
+        alert(ps[i].name);
+    }
+
+    // 創建一組用戶，用戶的屬性有
+    // List<Person> ps = new ArrayList<Person>();
+    // ps.add(new Person("Leon",22,["Ada","Alice"]));
+    // ps.add(new Person("John",33,["Ada","Chris"]));
+    // 把ps轉換為json
+
+    ps = [{
+        name: "Leon",
+        age: 22,
+        friends: ["Ada", "Alice"]
+    }, {
+        name: "John",
+        age: 33,
+        friends: ["Ada", "Chris"]
+    }];
+    </script>
+</body>
+
+</html>

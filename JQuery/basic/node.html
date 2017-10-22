@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="author" content="Admin">
+    <style type="text/css">
+    .addBg {
+        background: #f00;
+        color: #fff;
+    }
+
+    .bigger {
+        front-size: 20px;
+    }
+    </style>
+    <script type="text/javascript" src="jquery-3.2.0.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        /* 在d1元素中插入d3，在d1節點的最後插入，原先位置上的d3就消失了 */
+        // $("#d1").append($("#d3"));
+
+        /* 如果原始節點為數組，會在多個節點中插入 */
+        // $(".ddd").append($("#d3"));
+
+        /* 把d1插入到d3中 */
+        // $("#d1").appendTo($("#d3"));
+
+        /* 包裝集為ddd */
+        // $(".ddd").appendTo($("#d3")).css("color","#f00");
+
+        /* 包裝集為d3 */
+        // $("#d3").append($(".ddd")).css("color","#f00");
+
+        /* 在節點前面插入 */
+        // $('#d1').prepend($('#d3'));
+
+        /* 在節點d1後面插入，insertAfter和appendTo一樣 */
+        // $('#d1').after($('#d3'));
+
+        /* 在節點d1前面插入，insertBefore和insertAfter類似 */
+        // $('#d1').before($('#d3'));
+
+        /* 節點刪除 */
+        // $('#d2').remove();
+
+        /* 清空節點內的所有元素 */
+        // $('#d3').empty();
+        // $("#d1").before("<div>Hello</div>");
+
+        /* 要在欲操作節點的包裝集中呼叫，呼叫滿足條件的節點 */
+        // $('#d3 li').detach("li:contains('悟空')").css("color","#f00");
+
+        /* 此時返回的包裝集為d1，remove的時候就是remove了d1，還剩下hello，變相完成了節點的替換 */
+        // $('#d1').before("<div>hello</div>").remove().css('color', '#00f');
+        /* replaceWith方法就是基於上面原理實作而成，此時包裝集沒有任何意義，指向被移除的元素 */
+        // $('#d1').replaceWith("<div>OK</div>").css('color', '#f00');
+
+        /* 把d1的位置用d3包裹之後，替換d1 */
+        // $("#d1").wrap($("#d3"));
+        // $('.ddd').wrap($('#d3'));
+
+        /* 取消包裹 */
+        // $('ul').unwrap();
+
+        /* 把一組元素都包裹到d3中 */
+        // $('.ddd').wrapAll($('#d3'));
+
+        /* 用d3包裹了d1的值之後，才插入到d1中 */
+        $('#d1').wrapInner($('#d3'));
+    });
+    </script>
+</head>
+
+<body>
+    <div id="d1" class="ddd">第一個div</div>
+    <div id="d2" class="ddd">第二個div</div>
+    <div id="d3">
+        <ul>
+            <li>八戒</li>
+            <li>悟空</li>
+            <li>悟淨</li>
+        </ul>
+    </div>
+</body>
+
+</html>

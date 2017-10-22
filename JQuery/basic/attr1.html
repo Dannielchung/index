@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="author" content="Admin">
+    <script type="text/javascript" src="jquery-3.2.0.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        $('tbody tr').each(function(n) {
+            // alert($(this).attr("id"));
+            // $(this).attr("title",$(this).children("td:eq(1)").html());
+
+            // 可以基於json的格式來設置屬性，甚至可以設置一些非html的屬性，通過這些屬性來做一些特殊的處理。
+            // 設置特殊屬性已不再使用，原因在JQuery1.4之後就基本上不使用了，而使用data
+            $(this).attr({
+                "title": $(this).children("td:eq(1)").html(),
+                "id": $(this).children("td:eq(0)").html(),
+                "personId": n
+            });
+
+            // 移出屬性
+            $("tr#2").removeAttr("personId");
+        });
+    });
+    </script>
+</head>
+
+<body>
+    <center>
+        <a href="basic01.html">basic01.html</a>
+        <a href="basic02.html">basic02.html</a>
+        <a href="http://www.google.com">Google</a>
+        <a href="each_map.html">each_map.html</a>
+    </center>
+    <table width="700" border="1" align="center" id="tus"></table>
+    <table width="700" border="1" align="center" id="users">
+        <thead>
+            <tr>
+                <td>用戶標誌</td>
+                <td>用戶姓名</td>
+                <td>用戶年齡</td>
+                <td>用戶密碼</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr id="abc">
+                <td>1</td>
+                <td>呂布</td>
+                <td>23</td>
+                <td>abc123</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>關羽</td>
+                <td>23</td>
+                <td>123abc</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>趙雲</td>
+                <td>25</td>
+                <td>XXX123</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>典偉</td>
+                <td>26</td>
+                <td>123XXX</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>孔明</td>
+                <td>22</td>
+                <td>597XXX</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>

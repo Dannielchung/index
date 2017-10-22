@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="author" content="Admin">
+    <script type="text/javascript" src="jquery-3.2.0.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        //$("tbody td:nth-child(1)").css('color','#f00');
+
+        // 通過map可以有效的獲取某個包裝集中的元素轉換為數組
+        var ids = $("tbody td:nth-child(1)").map(function() {
+            var n = $(this).next("td");
+            var p = {
+                "id": $(this).html(),
+                "name": n.html()
+            };
+            return p;
+            // return $(this).html();
+        }).get(); // .get()方法可得到數組
+
+        for (var i = 0; i < ids.length; i++) {
+            // alert(ids[i].name);
+        }
+
+        var ns = $("tbody td:nth-child(2)");
+        // 以下遍歷方式是基於js的方式
+        // $(function() {
+        //     for (var i = 0; i < ns.length; i++) {
+        //         var nn = ns[i]; //此時的nn已經是js節點了
+        //         var id = $(ns[i]).prev("td").html();
+        //         var age = $(ns[i]).next("td").html();
+        //         nn.innerHTML = id + ">>" + nn.innerHTML + "(" + age + ")";
+        //     }
+        // });
+
+        // JQuery則用each方式遍歷，each中的匿名函式n表示數組中的下標，從0開始
+        ns.each(function(n) {
+            $(this).html($(this).prev("td").html()+"."+$(this).html()+"("+$(this).next("td").html()+")");
+        });
+
+    });
+    </script>
+</head>
+
+<body>
+    <table width="700" border="1" align="center" id="tus"></table>
+    <table width="700" border="1" align="center" id="users">
+        <thead>
+            <tr>
+                <td>用戶標誌</td>
+                <td>用戶姓名</td>
+                <td>用戶年齡</td>
+                <td>用戶密碼</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr id="abc">
+                <td>1</td>
+                <td>呂布</td>
+                <td>23</td>
+                <td>abc123</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>關羽</td>
+                <td>23</td>
+                <td>123abc</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>趙雲</td>
+                <td>25</td>
+                <td>XXX123</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>典偉</td>
+                <td>26</td>
+                <td>123XXX</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>孔明</td>
+                <td>22</td>
+                <td>597XXX</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>

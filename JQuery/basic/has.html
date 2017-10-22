@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="author" content="Admin">
+    <script type="text/javascript" src="jquery-3.2.0.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        $("li").has("ul").css("color", "#00f").end().css('color', '#0ff');
+
+        $("div").has('span').css("color",'#f00');
+    });
+    </script>
+</head>
+
+<body>
+    <div>
+        <span class="s1">
+            ssssssss
+        </span>
+    </div>
+    <div>
+        <span>
+            222222222
+        </span>
+    </div>
+    <div>
+        <ul class="u1">
+            <li>xxxxxxxx</li>
+        </ul>
+    </div>
+    <ul>
+        <li>aaaaa</li>
+        <li>bbbbb</li>
+        <li>
+            <ul>
+                <li>ccccc1</li>
+                <li>ccccc2</li>
+            </ul>
+        </li>
+        <li>ddddd</li>
+    </ul>
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+</head>
+<body>
+<!-- 尾遞迴 -->
+    <script type="text/javascript">
+    var factorial = function factorial(i, a) {
+        console.log('a = ' + a + ', i = ' + i);
+        a = a || 1;
+        console.log('a || 1 = ' + a);
+        if (i < 2) {
+            return a;
+        }
+        return factorial(i - 1, a * i)
+    }
+    document.writeln(factorial(4));
+    </script>
+
+</body>
+
+</html>
+<script type="text/javascript">
+	var myObject ={
+		value: 0;
+		increment: function(inc){
+			this.value += typeof inc === 'number' ? inc : 1;
+		}
+	};
+	myObject.double = function(){
+		var that = this;
+		var helper = function(){
+			this.value = add(that.value, that.value)
+		};
+		helper();
+	};
+	myObject.double();
+	document.writeln(myObject.getValue());
+	myObject.increment();
+	document.writeln(myObject.value);
+	myObject.increment(2);
+	document.writeln(myObject.value);
+</script>
+<!-- 保護值，不讓程式的其餘部分見到 -->
+<script type="text/javascript">
+	var myObject = function(){
+		var value = 0 ;
+		return {
+			increment: function(inc){
+				value += typeof inc === 'number' ? inc : 1;
+			},
+			getValue: function(){
+				return value;
+			}
+		}
+	}();
+</script>

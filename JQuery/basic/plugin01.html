@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="author" content="Admin">
+    <script type="text/javascript" src="jquery-3.2.0.js"></script>
+    <script type="text/javascript">
+    /*
+     直接通過$.方法名稱可以定義一個全局的插件，這種定義帶來的問題
+     1.一般插件都需要通過一個獨立的js文件來存儲，命名的則的確定。
+     2.如果將來$這個符號被jQuery.noConflict之後，如何保證還能繼續使用。
+     */
+    $.say = function(hello) {
+        alert('hello' + hello);
+    }
+    $(function() {
+        $.say("OK");
+    })();
+    </script>
+</head>
+
+<body>
+    <table width="700" border="1" align="center" id="tus"></table>
+    <table width="700" border="1" align="center" id="users">
+        <thead>
+            <tr>
+                <td>用戶標誌</td>
+                <td>用戶姓名</td>
+                <td>用戶年齡</td>
+                <td>用戶密碼</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr id="abc">
+                <td>1</td>
+                <td>呂布</td>
+                <td>23</td>
+                <td>abc123</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>關羽</td>
+                <td>23</td>
+                <td>123abc</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>趙雲</td>
+                <td>25</td>
+                <td>XXX123</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>典偉</td>
+                <td>26</td>
+                <td>123XXX</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>孔明</td>
+                <td>22</td>
+                <td>597XXX</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="author" content="Admin">
+    <script type="text/javascript" src="jquery-3.2.0.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        // 使用end()可以返回上一個包裝集
+        // $('tr:eq(2)').siblings('tr').css('color', '#fff').css('background', '#00f')
+        //     .end().css('background', '#f00').css('color', '#00f');
+
+        // $("#users tbody").clone().appendTo("#tus").find("tr:even").css('color', '#f00').end().end().find("tr:odd").css('color', '#00f');
+
+        // addBack()表示把所有的包裝集合併再一起
+        // $("#users tbody").clone().appendTo("#tus").addBack().find("td:contains('3')").css("color", "#0f0");
+
+        $("#users tbody").clone().appendTo("#tus");
+
+        // 查詢出了兩個包裝集，一個為tus一個為users的table，此時可以過濾得到users這個table，無法使用filter(tr)
+        // $("table").filter("table#users").css("color", "#f00");
+        // $("table").add('tr').filter("tr:odd").css("color", "#f00"); //此時才可以過濾
+
+        // 從users，這個id的元素中過濾tr為2的元素
+        $("#users").find("tr:eq(2)").css("background","#00f");
+    });
+    </script>
+</head>
+
+<body>
+    <table width="700" border="1" align="center" id="tus"></table>
+    <table width="700" border="1" align="center" id="users">
+        <thead>
+            <tr>
+                <td>用戶標誌</td>
+                <td>用戶姓名</td>
+                <td>用戶年齡</td>
+                <td>用戶密碼</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr id="abc">
+                <td>1</td>
+                <td>呂布</td>
+                <td>23</td>
+                <td>abc123</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>關羽</td>
+                <td>23</td>
+                <td>123abc</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>趙雲</td>
+                <td>25</td>
+                <td>XXX123</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>典偉</td>
+                <td>26</td>
+                <td>123XXX</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>孔明</td>
+                <td>22</td>
+                <td>597XXX</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>

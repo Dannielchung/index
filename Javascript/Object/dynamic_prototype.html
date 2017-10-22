@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+</head>
+
+<body>
+    <script type="text/javascript">
+    // 為了讓定義方式更加符合Java需求，就把定義方法的原型代碼放置到Person這個構造函數中
+    function Person(name, age, friends) {
+        // 屬性在構造函數中定義
+        this.name = name;
+        this.age = age;
+        this.friends = friends;
+        // 不能使用重寫方式定義
+        // Person.prototype = {
+        //     // 方法在原型中定義
+        //     constructor: Person,
+        //     say: function() {
+        //         alert(this.name + "[" + this.friends + "]");
+        //     }
+        // }
+        //
+        // 判斷當前Person.prototype.say是否存在，如果不存在就表示需要創建
+        // 當存在之後則不會再創建
+        if(!Person.prototype.say){
+            Person.prototype.say=function(){
+                alert(this.name + "[" + this.friends + "]");
+            }
+        }
+    }
+
+    // 此時所有的變量都保存在自己的空間中
+    var p1 = new Person("Leon", 23, ["Ada", "Chris"]);
+    p1.name = "John";
+    //會在原型中找friends，所以data是在原型中增加的
+    p1.friends.push("Mike");
+    p1.say();
+
+
+    var p2 = new Person("Ada", 23, ["Leon", "Chris"]);
+    // 此時原型就多了一個data，這就是原型所帶來了問題
+    p2.say();
+    </script>
+</body>
+
+</html>

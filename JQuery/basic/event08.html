@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="author" content="Admin">
+    <script type="text/javascript" src="jquery-3.2.0.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        $("*").bind('click', function(event,a,b) {
+            /* 僅僅只會執行一次 */
+            print(event.currentTarget.id + "--" + event.target.id + ":" +(a+b));
+        });
+        $("a[href='ccc']").bind("click",function(event){
+             /*
+              * 使用trigger帶來的好處有兩個
+              * 1.可以在其他的對象中調用另一個事件
+              * 2.可以為事件傳遞參數
+              * 使用trigger也存在事件冒泡
+              */
+            $("#child").trigger("click",[2,3]);
+            event.preventDefault();
+        });
+        function print(txt) {
+            $("#content").append(txt + "<br/>");
+        }
+    });
+    </script>
+</head>
+
+<body id="body">
+    <div id="parent">
+        <div id="child">
+            點了看一下
+        </div>
+    </div>
+    <a href="ccc">abc</a>
+    <div id="content">
+    </div>
+</body>
+
+</html>

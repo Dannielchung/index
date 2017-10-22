@@ -1,0 +1,21 @@
+.test .color1 { width: 12.5%; background-color: red; height: 10px; float: left; }
+
+.test .color2 { width: 12.5%; background-color: orange; height: 10px; float: left; }
+
+.test .color3 { width: 12.5%; background-color: yellow; height: 10px; float: left; }
+
+.test .color4 { width: 12.5%; background-color: green; height: 10px; float: left; }
+
+.test .color5 { width: 12.5%; background-color: grey; height: 10px; float: left; }
+
+.test .color6 { width: 12.5%; background-color: blue; height: 10px; float: left; }
+
+.test .color7 { width: 12.5%; background-color: purple; height: 10px; float: left; }
+
+.test .color8 { width: 12.5%; background-color: black; height: 10px; float: left; }
+
+.test { width: 100%; }
+
+.test2 { height: 10px; width: 100%; background-image: linear-gradient(to right, red 0%, red 12.5%, orange 12.5%, orange 25%); }
+
+/*# sourceMappingURL=main_color.css.map */

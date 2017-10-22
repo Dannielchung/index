@@ -1,0 +1,32 @@
+/* line 4, ../sass/demo1.scss */
+p {
+  font-size: 14px;
+}
+
+/* line 11, ../sass/demo1.scss */
+.container {
+  font-size: 14px;
+}
+
+/* line 18, ../sass/demo1.scss */
+body {
+  color: red;
+}
+
+/* line 29, ../sass/demo1.scss */
+a:hover {
+  cursor: e-resize;
+}
+
+/* line 34, ../sass/demo1.scss */
+p:before {
+  content: "Hello,Saas 3";
+}
+
+/* line 38, ../sass/demo1.scss */
+p {
+  font: 20px/10px;
+  width: 7.5px;
+  width: 7.5px;
+  height: 50px;
+}

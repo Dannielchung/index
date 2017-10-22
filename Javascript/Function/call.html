@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+</head>
+
+<body>
+    <script type="text/javascript">
+    //當需要創建一個類的時候，設置類的屬性和方法需要通過this關鍵字來引用，
+    //但是特別注意this關鍵字，在調用時，會根據不同的調用對象變得不同。
+    var color = "red";
+
+    function showColor() {
+        console.log(this.color);
+    }
+    // 創建了一個類，有一個color的屬性和一個show方法。
+    function Circle(color) {
+        this.color = color;
+    }
+
+   var c = new Circle("yello");
+   showColor.call(this); //使用上下文來調用showColor，結果是red
+   showColor.call(c); //使用上下文對象是c，結果是yellow
+   // 通過以上發現，使用call和apply之後，對象中就可以不需要定義方法了，
+   // 這就是call和apply的一種運用
+    </script>
+</body>
+
+</html>

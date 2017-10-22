@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	fn1();
+	// 使用這種寫法定義的函數，永遠都會最先被初始化
+	function fn1(){
+		alert("fn1");
+	}
+
+	fn2();
+	// 使用如下方式定義函數，不會被先執行，如果在之前調用該函數會報錯
+	// 現在內存中創建一個區域，之後通過一個fn2變量指向這塊區域，這塊區域的函數開始是沒有名稱的，
+	// 這種函數就叫做匿名函數
+	var fn2 = function(){
+		alert("fn1");
+	}
+
+</script>
+</body>
+</html>

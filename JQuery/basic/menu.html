@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <style type="text/css">
+    * {
+        padding: 0px;
+        margin: 0px;
+        font-size: 12px;
+    }
+
+    #menu_bar {
+        position: absolute;
+        left: 50px;
+        top: 50px;
+    }
+
+    dl.menu {
+        float: left;
+        width: 120px;
+    }
+
+    dl.menu dt
+    {
+        height: 30px;
+        background: #339;
+        color: #fff;
+        border-right: #fffffff 1px solid;
+        text-align: center;
+    }
+
+    dl.menu dt span {
+        position: relative;
+        top: 6px;
+    }
+    /*以下樣式一般來說是最後加載，所以如果在dd上面使用了class之後，class會被先加載，之後才會加載下面樣式，所以會被覆蓋*/
+    /*dl.menu dd {
+        background: #911;
+        color: #fff;
+        border-right: #fffffff 1px solid;
+        display: none;
+    }*/
+    dd.menuItem {
+        background: #911;
+        color: #fff;
+        border-right: #fffffff 1px solid;
+        display: none;
+        height: 30px;
+        cursor: pointer;
+    }
+    dl.menu dd a {
+        position: relative;
+        top: 6px;
+    }
+
+    a.menu_href:link,
+    a.menu_href:visited {
+        text-decoration: none;
+        color: #fff;
+    }
+
+    dd.hoverClass {
+        background: #393;
+        /*cursor: pointer;*/
+    }
+
+    /*IE不支持*/
+    /*dl.menu dd {
+        background: #393;
+        cursor: pointer;
+    }*/
+    </style>
+    <script type="text/javascript" src="jquery-3.2.0.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        // $(".menu").mouseenter(function() {
+        //     $(this).find("dd").css("display", "block");
+        // }).mouseleave(function(){
+        //     $(this).find("dd").css("display", "none");
+        // });
+        $(".menu").hover(function() {
+            $(this).find("dd").css("display", "block");
+        },function(){
+            $(this).find("dd").css("display", "none");
+        });
+        // $(".menu dd").hover(function(){
+        //     $(this).addClass("hoverClass");
+        // },function(){
+        //     $(this).removeClass("hoverClass");
+        // });
+        $(".menu dd").hover(itemHover,itemHover);
+        function itemHover(){
+            $(this).toggleClass("hoverClass");
+        }
+    });
+    </script>
+</head>
+
+<body>
+    <div id="menu_bar">
+        <dl class="menu">
+            <dt><span>文件管理</span></dt>
+            <dd class="menuItem"><a href="#" class="menu_href">打開文件</a></dd>
+            <dd class="menuItem"><a href="#" class="menu_href">刪除文件</a></dd>
+            <dd class="menuItem"><a href="#" class="menu_href">儲存文件</a></dd>
+            <dd class="menuItem"><a href="#" class="menu_href">關閉文件</a></dd>
+            <dd class="menuItem"><a href="#" class="menu_href">退出</a></dd>
+        </dl>
+        <dl class="menu">
+            <dt><span>編輯</span></dt>
+            <dd class="menuItem"><a href="#" class="menu_href">重複操作</a></dd>
+            <dd class="menuItem"><a href="#" class="menu_href">撤銷操作</a></dd>
+            <dd class="menuItem"><a href="#" class="menu_href">拷貝</a></dd>
+            <dd class="menuItem"><a href="#" class="menu_href">貼上</a></dd>
+        </dl>
+        <dl class="menu">
+            <dt><span>視圖</span></dt>
+            <dd class="menuItem"><a href="#" class="menu_href">列印視圖</a></dd>
+            <dd class="menuItem"><a href="#" class="menu_href">瀏覽視圖</a></dd>
+            <dd class="menuItem"><a href="#" class="menu_href">開發視圖</a></dd>
+        </dl>
+        <dl class="menu">
+            <dt><span>窗口</span></dt>
+            <dd class="menuItem"><a href="#" class="menu_href">關閉視窗</a></dd>
+            <dd class="menuItem"><a href="#" class="menu_href">偏好設定</a></dd>
+        </dl>
+    </div>
+</body>
+
+</html>

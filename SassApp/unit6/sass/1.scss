@@ -1,0 +1,33 @@
+@import "css.css";
+@import "http://sss/xx";
+@import url(css.css);
+
+@import "part";
+
+$fontSize: 14px;
+$fontSize: 12px !default;
+$paddings: 3px 10px 5px 10px;
+$maps: (color:red,borderColor: blue);
+$className: main;
+body{
+	$color: red !global;
+	color: $color;
+	font-size: $fontSize;
+	padding: $paddings;
+	padding-left:  nth($paddings, 1);
+}
+footer{
+	color: $color;
+	background-color: map-get($maps,color);
+	border-color: map-get($maps,borderColor)
+}
+.#{className}{
+	width:50px;
+	height: 30px
+}
+$text-info: lightgreen;
+//$text-info: red;
+
+.text-info{
+	color: $text-info;
+}

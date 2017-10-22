@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+</head>
+
+<body>
+    <div id="person"></div>
+    <script type="text/javascript">
+    // 通過arguments可以獲取相應的參數值，此屬性為一數組，其實就是傳遞進來的參數
+    function say(num) {
+        // alert(arguments.length);
+        for (var i = 0; i < arguments.length; i++) {
+            console.log(arguments[i]);
+        }
+        console.log(num);
+    }
+    say(1, 2, 3);
+
+    //arguments中有一個Callee的方法，通過此方法arguments.callee(arg)可以反向的調用函數
+    // 求階層函式
+    function factorial(num) {
+        if (num <= 1) return 1;
+        //此時開始會報錯
+        // else return num * factorial(num - 1);
+        else return num * arguments.callee(num - 1);
+    }
+    var cf = factorial;
+    alert(cf(5));
+    //此時開始會報錯
+    factorial = null;
+    alert(cf(5));
+    </script>
+</body>
+
+</html>

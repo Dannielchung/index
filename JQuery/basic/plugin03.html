@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="author" content="Admin">
+    <style type="text/css">
+    * {
+        padding: 0px;
+        margin: 0px;
+        font-size: 12px;
+    }
+
+    body {
+        padding: 40px;
+    }
+
+    .topicList {
+        width: 300px;
+        border: 1px solid #999;
+    }
+    /*.topicList ul {*/
+    /*display: none;*/
+    /*}*/
+
+    .topicList li {
+        list-style: none;
+        padding: 8px 0px;
+        margin-left: 10px;
+        margin-right: 10px;
+        border-bottom: 1px dotted #aaa;
+    }
+
+    .topicList h3 {
+        height: 35px;
+        background: #347;
+        color: #fff;
+        border-bottom: 1px solid #fff;
+        cursor: pointer;
+        /*display: block;*/
+    }
+
+    .topicList h3 span {
+        position: relative;
+        left: 15px;
+        top: 10px;
+    }
+    </style>
+    <script type="text/javascript" src="jquery-3.2.0.js"></script>
+    <script type="text/javascript" src="jquery.util.topic.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        /*
+         * 使用fadeIn,show,slideDown可以完成某個容器的顯示
+         * 使用fadeOut,hide,slideUp可以完成某個容器的隱藏
+         * 所以可以通過各個的Toggle來完成兩個之間的輪轉
+         */
+        $(".topicList h3").click(function() {
+            $(".topicList ul").toggle(100);
+            // $(".topicList ul").fadeToggle("slow", "linear");
+        });
+        // $(".topicList li").each(function(n) {
+        //     $(this).html($.fixedTopicWidth($(this).html(), {
+        //         length: 10,
+        //         fill: ".",
+        //         fillLength: 5
+        //     }));
+        // });
+        $(".topicList li").setColor();
+        $(".topicList li").formatTopic({
+            fill: ".",
+            length: 21
+        });
+    });
+    </script>
+</head>
+
+<body>
+    <div class="topicList">
+        <h3><span>學習天地</span></h3>
+        <ul>
+            <li>感謝王緒文老師、李茂芳老師、鄭清陽老師、各班同學及畢業的學姊提供相關文章及資料所有文章版權，均屬於作者所擁有</li>
+            <li>Javascript</li>
+            <li>C#</li>
+            <li>Delphi</li>
+            <li>C</li>
+            <li>C++</li>
+            <li>Swift</li>
+            <li>Objective-C</li>
+            <li>Python</li>
+        </ul>
+    </div>
+</body>
+
+</html>

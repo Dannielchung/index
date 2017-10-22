@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="stylesheets/index.css">
+    <link rel="stylesheet" id="skin1" href="stylesheets/skin1.css">
+    <link rel="stylesheet" id="skin2" href="stylesheets/skin2.css" disabled>
+
+</head>
+<body>
+<header>
+    <div class="logo">
+        <img src="images/phone-call.svg" alt="logo">
+    </div>
+    <nav>
+        <a href="#">Menu1</a> <span>|</span>
+        <a href="#">Menu2</a> <span>|</span>
+        <a href="#">Menu3</a> <span>|</span>
+    </nav>
+    <div class="skin">
+        <select name="skin" id="select_skin">
+            <option value="skin1">皮膚1</option>
+            <option value="skin2">皮膚2</option>
+        </select>
+    </div>
+</header>
+<section class="container" style="background: url(images/200.gif) no-repeat center top;height: 400px;"></section>
+<footer style="background: url(images/201.gif) repeat-x;background-size: contain;height: 300px;margin-top: 30px;">
+    &copy;Copyright
+</footer>
+<script>
+    var selectSkin = document.getElementById("select_skin");
+    selectSkin.addEventListener('change',function(evt){
+        var target = evt.target;
+        var skinValue = target.value;
+        var links = document.getElementsByTagName('link');
+        for(var i=0,len=links.length; i<len;i++){
+            if(links[i].id){
+                links.disabled=(links[i.id]!=skinValue)
+            }
+        }
+    });
+</script>
+
+</body>
+</html>

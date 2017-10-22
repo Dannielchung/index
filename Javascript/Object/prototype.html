@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+</head>
+
+<body>
+    <script type="text/javascript">
+    // 原型創建方式，可以基於原型的創建可以將屬性和方法設置為Person專有的，不能在通過window來調用。
+    // 第一種狀態
+    function Person() {
+
+    }
+    // 第二種狀態
+    Person.prototype.name = "Leon";
+    Person.prototype.age = 23;
+    Person.prototype.say = function() {
+            alert(this.name + "," + this.age);
+    }
+    // 第三種狀態 ，創建後一個對象會有一個_prop_屬性會指向原型
+    var p1 = new Person();
+    // 通過window沒辦法調用say方法，如此就可以完成封裝了
+    // p1.say();
+    // 第四種狀態
+    var p2 = new Person();
+    p2.name = "Ada";
+    p2.say();
+
+    // 以下方法用於檢測p1是否有_prop_指向Person原型
+    // alert(Person.prototype.isPrototypeOf(p1));
+
+    // 檢測某個對象的constructor
+    // alert(p1.constructor == Person);
+
+    // 檢測某個屬性是不是自己的屬性
+    // alert(p1.hasOwnProperty("name")); //false，p1自己空間中沒有值
+    // alert(p2.hasOwnProperty("name")); //true，p2中有設置了name
+
+    // 可以通過delete刪除屬性
+    // delete p2.name;
+    // p2.say();
+    // alert(p2.hasOwnProperty("name")); //由於已經刪除了，所以是false
+
+    // 檢測某個對象在原型或者自己中是否包含有某個屬性，通過in檢測
+    // alert("name" in p1); //true
+    alert("name" in p2); //true
+    // alert("address" in p1); //false
+
+    // 通過如下方法檢測某個屬性是否存在原型中存在
+    function hasPrototypeProperty(obj,prop){
+    	return (!obj.hasOwnProperty(prop)&&(prop in obj))
+    }
+
+    console.log(hasPrototypeProperty(p1,"name"));
+    console.log(hasPrototypeProperty(p2,"name"));
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+</head>
+
+<body>
+    <script type="text/javascript">
+    // 為了解決原型所帶來的問題，此處需要組合構造函數與原型來實現對象的創建
+    // 將屬性在構造函數中定義，將方法在原型中定義
+    // 這種有效集合兩者的優點，是目前最為常用的一種方式
+    function Person(name, age, friends) {
+    	// 屬性在構造函數中定義
+        this.name = name;
+        this.age = age;
+        this.friends = friends;
+    }
+    Person.prototype = {
+    	// 方法在原型中定義
+        constructor: Person,
+        say: function() {
+            alert(this.name + "[" + this.friends + "]");
+        }
+    }
+    // 此時所有的變量都保存在自己的空間中
+    var p1 = new Person("Leon",23,["Ada","Chris"]);
+    p1.name = "John";
+    //會在原型中找friends，所以data是在原型中增加的
+    p1.friends.push("Mike");
+    p1.say();
+
+
+    var p2 = new Person("Ada",23,["Leon","Chris"]);
+    // 此時原型就多了一個data，這就是原型所帶來了問題
+    p2.say();
+    </script>
+</body>
+
+</html>

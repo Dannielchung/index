@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		// 對象是通過引用的指向完成對象的賦值的，而函數卻是通過對象的拷貝來完成。
+		function fn1(){
+			console.log("fnX");
+		}
+		console.log(typeof fn1);
+		var fn2 = fn1;
+		fn2();
+		fn1 = function(){
+			console.log("fn1");
+		}
+		fn2();
+		fn1();
+
+		var o1 = new Object();
+		var o2 = o1;
+		o2.name = "Leon";
+		alert(o1.name);
+	</script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+$n1: 1.2;
+$n2: 12;
+$n3: 14px;
+p {
+    font-size: $n3;
+}
+
+$s1: container;
+$s2: 'container';
+$s3: "container";
+.#{$s3} {
+    font-size: $n3;
+}
+
+$bt: true;
+$bf: false;
+$null: null;
+body {
+    @if $null==null {
+        color: red;
+    }
+}
+
+$c1: blue;
+$c2: #fff;
+$c3: rgba(255, 255, 0, 0.5);
+$width1: 10px;
+$width2: 15px;
+a:hover {
+    cursor: e-resize;
+}
+
+$version: 3;
+p:before {
+    content: 'Hello,Saas #{$version}';
+}
+
+p {
+    font: 20px/10px;
+    width: $width2 / 2;
+    width: round($width2) / 2;
+    height: (100px/2);
+}
+
+

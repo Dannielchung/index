@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Highcharts Second Demo</title>
+    <script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
+    <!--<script src="https://code.highcharts.com/modules/treemap.js"></script>-->
+</head>
+
+<body>
+    <script src="https://code.highcharts.com/stock/highstock.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+    <div id="container" style="height: 400px; min-width: 310px"></div>
+    <script>
+    $(function() {
+        var seriesOptions = [],
+            seriesCounter = 0,
+            names = ['MSFT', 'AAPL', 'GOOG'];
+
+        /**
+         * Create the chart when all data is loaded
+         * @returns {undefined}
+         */
+        function createChart() {
+
+            Highcharts.stockChart('container', {
+
+                rangeSelector: {
+                    selected: 4
+                },
+
+                yAxis: {
+                    labels: {
+                        formatter: function() {
+                            return (this.value > 0 ? ' + ' : '') + this.value + '%';
+                        }
+                    },
+                    plotLines: [{
+                        value: 0,
+                        width: 2,
+                        color: 'silver'
+                    }]
+                },
+
+                plotOptions: {
+                    series: {
+                        compare: 'percent',
+                        showInNavigator: true
+                    }
+                },
+
+                tooltip: {
+                    pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.y}</b> ({point.change}%)<br/>',
+                    valueDecimals: 2,
+                    split: true
+                },
+
+                series: seriesOptions
+            });
+        }
+
+
+
+        var data = `[{"FBI":[["Jan 25, 2016 12:00:00 AM",4],["Apr 26, 2016 12:00:00 AM",2],["Jun 27, 2016 12:00:00 AM",1],["Sep 20, 2016 12:00:00 AM",1],["Oct 3, 2016 12:00:00 AM",1]],"INT":[["Jan 25, 2016 12:00:00 AM",2],["Mar 10, 2016 12:00:00 AM",27],["Mar 30, 2016 12:00:00 AM",1],["Apr 14, 2016 12:00:00 AM",1],["Apr 18, 2016 12:00:00 AM",1],["Apr 29, 2016 12:00:00 AM",102],["Apr 30, 2016 12:00:00 AM",10],["Aug 29, 2016 12:00:00 AM",1],["Aug 31, 2016 12:00:00 AM",3],["Sep 14, 2016 12:00:00 AM",1],["Sep 20, 2016 12:00:00 AM",1]],"DEF":[["Mar 10, 2016 12:00:00 AM",21],["Apr 14, 2016 12:00:00 AM",3],["Apr 25, 2016 12:00:00 AM",3],["Apr 27, 2016 12:00:00 AM",1],["Aug 29, 2016 12:00:00 AM",3]],"EWA":[["Mar 10, 2016 12:00:00 AM",18],["Mar 30, 2016 12:00:00 AM",8],["Mar 31, 2016 12:00:00 AM",2],["Apr 18, 2016 12:00:00 AM",1],["Apr 24, 2016 12:00:00 AM",6],["Apr 26, 2016 12:00:00 AM",2],["Jul 26, 2016 12:00:00 AM",1],["Aug 17, 2016 12:00:00 AM",2]],"ANA":[["Jan 13, 2016 12:00:00 AM",12],["Jan 14, 2016 12:00:00 AM",12],["Jan 15, 2016 12:00:00 AM",4],["Jan 18, 2016 12:00:00 AM",4],["Jan 25, 2016 12:00:00 AM",20],["Jan 26, 2016 12:00:00 AM",4],["Mar 10, 2016 12:00:00 AM",6],["Mar 15, 2016 12:00:00 AM",8],["Apr 6, 2016 12:00:00 AM",4],["Apr 12, 2016 12:00:00 AM",1],["Apr 14, 2016 12:00:00 AM",1],["Apr 18, 2016 12:00:00 AM",1],["Apr 19, 2016 12:00:00 AM",4],["Apr 20, 2016 12:00:00 AM",5],["Apr 25, 2016 12:00:00 AM",10],["May 24, 2016 12:00:00 AM",1],["Jun 3, 2016 12:00:00 AM",2],["Sep 2, 2016 12:00:00 AM",4],["Sep 5, 2016 12:00:00 AM",4],["Sep 6, 2016 12:00:00 AM",2]]}]`;
+        var highchart_obj;
+        highchart_obj = JSON.parse(data);
+        // console.log(highchart_obj);
+        // var ReasonCountDataArray = [];
+        var ANAArray=[],FBIArray=[],EWAArray=[],INTArray=[],DEFArray=[];
+        for (var c in highchart_obj) {
+            ANAArray.push(highchart_obj[c].ANA);
+        }
+       console.log(ANAArray);
+       seriesOptions[1] = { name: 'ANA', data: ANAArray };
+       createChart();
+    });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <script type="text/javascript">
+    // 當窗口加載完畢後，才會執行init方法。
+    // 如果希望使用如下的事件定義方式，需要先完成html信息的加載。
+    window.onload = init;
+
+    function init() {
+        // 找到所有的li
+        var lis = document.getElementsByTagName('li');
+        // 為所有的li綁定事件
+        for (var i = 0; i < lis.length; i++) {
+            lis[i].onmouseover = changeColor;
+            lis[i].onmouseout = reColor;
+        }
+
+        var btn = document.getElementById('btn');
+        btn.onclick = function() {
+            // 注意執行綁定事件的時候，如沒有把html的標籤渲染出來，所以通過Dom得到的節點都是null的，就會報錯。
+            // 這個事件默認會有一個event參數且this表示這個按鈕
+            // 用於解決瀏覽器相容性問題
+            event = event || window.event;
+            console.log(this.value);
+        }
+    }
+    function changeColor(){
+        this.style.color = '#f00';
+    }
+    function reColor(){
+        this.style.color = '#000';
+    }
+
+    </script>
+</head>
+
+<body>
+    <ul>
+        <li>aaaaaaaaaaaa</li>
+        <li>bbbbbbbbbbbb</li>
+        <li>cccccccccccc</li>
+        <li>dddddddddddd</li>
+        <li>eeeeeeeeeeee</li>
+    </ul>
+    <input type="button" name="" value="點擊一下" id="btn" />
+</body>
+
+</html>

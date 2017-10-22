@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+</head>
+
+<body>
+    <script type="text/javascript">
+    function Person(name) {
+        // 此時就沒有辦法直接訪問name這個屬性，因為沒有this.name
+        // 要訪問name，只能透過this.getName,this.setName
+        // 但是使用這種方式創建私有變量帶來的問題是，每個對象都存在大量的函數
+        // 解決的辦法是透過靜態的私有變量來解決
+        this.setName = function(value){
+            name = value;
+        }
+        this.getName = function() {
+            return name;
+        }
+    }
+    var p = new Person("aa");
+    alert(p.getName());
+    p.setName("bb");
+    alert(p.getName());
+
+    </script>
+</body>
+
+</html>

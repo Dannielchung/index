@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <script type="text/javascript">
+    function getPwd() {
+        var pwd = document.getElementById('pwd');
+        console.log(pwd.value);
+        var pc = document.getElementById("showPwd");
+        pc.innerHTML = pwd.value;
+    }
+
+    function getUsers() {
+        var users = document.getElementsByName('users');
+        for (var i = 0; i < users.length; i++) {
+            console.log(users[i].value);
+        }
+    }
+
+    function getInputs() {
+        var is = document.getElementsByTagName('input');
+        for (var i = 0; i < is.length; i++) {
+            console.log(is[i].value);
+        }
+    }
+
+    function getAllH1() {
+        var ah = document.getElementsByTagName("h1");
+        for (var i = 0; i < ah.length; i++) {
+            console.log(ah[i].innerHTML);
+            console.log(ah[i].nodeName);
+            console.log(ah[i].nodeType);
+            console.log(ah[i].nodeValue);
+            console.log(ah[i].firstChild.nodeValue);
+
+        }
+    }
+
+    function getConH1() {
+        var con = document.getElementById('content');
+        var h2 = con.getElementsByTagName('h2'); //為數組
+
+        console.log(h2[0].innerHTML);
+        var pn =  h2[0].parentNode;
+        var h3 = pn.getElementsByTagName('h3')[0];
+        var s = h3.getElementsByTagName('span')[0];
+        console.log(s.innerHTML);
+        }
+    </script>
+</head>
+
+<body>
+    <ul>
+        <li>aaaaaaaaaaaa</li>
+        <li>bbbbbbbbbbbb</li>
+        <li>cccccccccccc</li>
+        <li>dddddddddddd</li>
+        <li>eeeeeeeeeeee</li>
+    </ul>
+    <input type="button" name="" value="點擊一下" id="btn" />
+    <script type="text/javascript">
+
+        var btn = document.getElementById('btn');
+        btn.onclick = function(){
+            // 注意執行綁定事件的時候，如沒有把html的標籤渲染出來，所以通過Dom得到的節點都是null的，就會報錯。
+            // 這個事件默認會有一個event參數且this表示這個按鈕
+            // 用於解決瀏覽器相容性問題
+            event = event || window.event;
+
+        }
+    </script>
+</body>
+
+</html>

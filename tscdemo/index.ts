@@ -1,17 +1,32 @@
-
-console.log("123");
-function MyFunc() {
-    var obj = {
-        a: undefined,
-        b: 0
-    };
-    return {
-        get_a: function() {
-            return obj.a * obj.a;
-        },
-        set_a: function(a) {
-            var c;
-            if (a !== undefined) { obj.a = a; }
-        }
-    };
+(function(){
+    let i;
+for(let i = 0;i<10;i++){
+    for(let i = 0;i<10;i++){
+        console.log(i);
+    }
 }
+var a=1;
+interface IAngel{
+    name:string;
+}
+class Point{
+    angel:IAngel;
+    constructor(){
+        
+    }
+    run(){
+        return this.angel;
+    }
+    setAngel(value: IAngel){
+        this.angel=value;
+    }
+    getAngel(): string{
+        return this.angel.name;
+    }
+    
+}
+var p = new Point();
+p.setAngel({name:"Will"});
+// p.run();
+console.log(p.getAngel());
+});

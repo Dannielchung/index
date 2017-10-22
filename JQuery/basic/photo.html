@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>03_select</title>
+    <link rel="stylesheet" type="text/css" href="photo.css">
+    <script type="text/javascript" src="jquery-3.2.0.js"></script>
+    <script type="text/javascript" src="jquery-migrate-1.4.1.js"></script>
+    <script type="text/javascript" src="jquery.slice.movie.js"></script>
+    <script type="text/javascript">
+    $(function() {
+    	$("#thumbnails img").movieSlice({
+    		movieElement:"#movie"
+    	});
+        // $("#thumbnails img").photoslice({
+        // 	photoElement:"#movie",
+        // 	firstControl:"#firstMovie",
+        // 	lastControl:"#lastMovie",
+        // 	nextControl:"#nextMovie",
+        // 	prevControl:"#prevMovie",
+        // 	replacePath:function(name){
+        // 		return name.replace(/thumbnail/,"movie");
+        // 	}
+        // });
+    });
+    </script>
+</head>
+
+<body>
+    <div id="container">
+        <h1>電影列表</h1>
+        <div id="thumbnails">
+            <img src="thumbnail/movie01.jpg" alt="美國隊長2" height="500" />
+            <img src="thumbnail/movie02.jpg" alt="雷神索爾" height="500" />
+            <img src="thumbnail/movie03.jpg" alt="復仇者聯盟" height="500" />
+            <img src="thumbnail/movie04.jpg" alt="蟻人" height="500" />
+            <img src="thumbnail/movie05.jpg" alt="奇異博士" height="500" />
+            <img src="thumbnail/movie06.jpg" alt="死恃" height="500" />
+            <img src="thumbnail/movie07.jpg" alt="無敵皓克" height="500" />
+        </div>
+        <div id="movieShow">
+            <img id="movie" src="" alt="電影大圖顯示" />
+        </div>
+        <div id="buttonBar">
+            <input type="button" value="第一張" id="firstMovie" />
+            <input type="button" value="上一張" id="prevMovie" />
+            <input type="button" value="下一張" id="nextMovie" />
+            <input type="button" value="最後一張" id="lastMovie" />
+        </div>
+    </div>
+</body>
+
+</html>

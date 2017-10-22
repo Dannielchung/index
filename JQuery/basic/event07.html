@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="author" content="Admin">
+    <script type="text/javascript" src="jquery-3.2.0.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        $("*").one('click', function(event) {
+            /* 僅僅只會執行一次 */
+            print(event.currentTarget.id + "--" + event.target.id);
+        });
+
+        function print(txt) {
+            $("#content").append(txt + "<br/>");
+        }
+    });
+    </script>
+</head>
+
+<body id="body">
+    <div id="parent">
+        <div id="child">
+            點了看一下
+        </div>
+    </div>
+    <a href="ccc">abc</a>
+    <div id="content">
+    </div>
+</body>
+
+</html>

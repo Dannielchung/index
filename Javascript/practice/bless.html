@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <script type="text/javascript">
+    function bless() {
+        // 獲取輸入的祝福語
+        var mb = document.getElementById("mb").value;
+        // 獲取父類的窗口
+        var p = window.opener;
+        // 設置pd的值
+        var pd = p.document.getElementById('bless');
+
+        pd.innerHTML = mb;
+        // 關閉當前窗口
+        window.close();
+    }
+    </script>
+</head>
+
+<body>
+    輸入祝福語言：
+    <input type="text" size="40" id="mb" />
+    <input type="button" onclick="bless()" value="輸入" />
+</body>
+
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript">
+	// 在js中不存在類，所以可以直接通過Object來創建對象，
+	// 但是使用如下方式創建，帶來最大問題是由於沒有類的約束，無法實現對象的重複利用，
+	// 沒有一種約定，在操作時會帶來問題。
+		var person = new Object();
+		person.name =  "Leon";
+		person.age = 11;
+		person.say = function(){
+			console.log(this.name+","+this.age);
+		}
+	</script>
+</head>
+<body>
+
+</body>
+</html>

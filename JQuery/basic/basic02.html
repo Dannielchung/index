@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> </title>
+    <script type="text/javascript" src="jquery-3.2.0.js"></script>
+    <style type="text/css">
+    .bg {
+        background: #f00;
+        color: #fff;
+    }
+    </style>
+    <script type="text/javascript">
+    $(function() {
+        var hello = document.getElementById("hello");
+        $(hello).css("color", "#f00");
+        // 每一個jquery都是數組，只要取出數組中的值，這個值就是js的節點。就只能用js的方法。
+        // 當轉換為js節點之後，就無法使用jquery的方法，如果要使用jquery的方法在通過$()進行封裝就可以了
+        ($('li.abc')[0]).innerHTML = 'abcde';
+        var lis = $("#hello ul li");
+        for (var i = 0; i < lis.length; i++) {
+            // 目前的li是js的節點
+            var li = lis[i];
+            // li.innerHTML = "[" + (i + 1) + "]" + li.innerHTML;
+            // $(li)就變成了jquery節點
+            // xx.html()讀取內容，xx.html('abc')，把節點的內容完成替換
+
+            $(li).html((i+1)+"."+$(li).html());
+        };
+    });
+    </script>
+</head>
+
+<body>
+    <div id="hello">
+        <ul>
+            <li>aaaaaaaa</li>
+            <li class="abc">bbbbbbbb</li>
+            <li>cccccccc</li>
+            <li>dddddddd</li>
+        </ul>
+    </div>
+</body>
+
+</html>

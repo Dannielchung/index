@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="author" content="Admin">
+    <style>
+    .bgc {
+        background: #f00;
+        color: #fff;
+    }
+    </style>
+    <script type="text/javascript" src="jquery-3.2.0.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        /*
+         * 由於live事件寫法很怪，所以在1.4之後提供了delegate方法，來完成事件委派。
+         * $("#content")表示的是作用域，第一個參數表示的是綁定對象。
+         * 目前如果要做事件的委派可以有多種方法，
+         * 使得事件的調用選擇很多，JQuery在1.8之後統一使用on,off來替代bind,live,delegate
+         */
+        $("#content").delegate(".ccc","click",function(){
+            alert($(this).html());
+        });
+        $("#content").append("<div class='ccc'>bbbb</div>")
+        $("#abc").append("<div class='ccc'>bbbb</div>")
+    });
+    </script>
+</head>
+
+<body id="body">
+    <div id="content">
+        <div class="ccc">aaaaaa</div>
+    </div>
+    <div id="abc"></div>
+</body>
+
+</html>

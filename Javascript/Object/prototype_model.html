@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		// 原型是js中非常特殊的一個對象，當一個函數創建之後會隨之產生一個原型對象。
+		// 當通過這個函數的構造函式創建一個具體的對象之後，在這個具體的對象中，就會有一個屬性指向原型。
+		// 基於原型創建雖然可以有效完成封裝，但是依然存有一些問題
+		// 1. 無法通過構造函數來設置屬性值
+		// 2. 當屬性中有引用類型變量，可能存在變量值重複
+		function Person(){
+
+		}
+		Person.prototype = {
+			constructor:Person,
+			name:"Leon",
+			age:30,
+			friends:["Ada","Chris"],
+			say:function(){
+				alert(this.name+"["+this.friends+"]");
+			}
+		}
+		var p1 = new Person();
+		p1.name="John";
+		p1.say();
+		//會在原型中找friends，所以data是在原型中增加的
+		p1.friends.push("data");
+
+		var p2 = new Person();
+		// 此時原型就多了一個data，這就是原型所帶來了問題
+		p2.say();
+	</script>
+</body>
+</html>

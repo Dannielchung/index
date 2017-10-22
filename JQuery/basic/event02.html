@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="author" content="Admin">
+    <script type="text/javascript" src="jquery-3.2.0.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        // DOM0帶來最大的問題是，事件會被覆蓋
+        $("#child")[0].onclick = function() {
+            print("abc");
+        }
+        $("#child")[0].onclick = function() {
+            print("bcd");
+        }
+        $("#child")[0].onclick = function() {
+            print("efg");
+        }
+        $("#child")[0].onclick = function() {
+            print("ijk");
+        }
+
+        function print(txt) {
+            $("#content").append(txt + "<br/>");
+        }
+    });
+    </script>
+</head>
+
+<body id="body">
+    <div id="parent">
+        <div id="child">
+            點了看一下
+        </div>
+    </div>
+    <div id="content">
+    </div>
+</body>
+
+</html>

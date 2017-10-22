@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="author" content="Admin">
+    <style>
+    .bgc {
+        background: #f00;
+        color: #fff;
+    }
+    </style>
+    <script type="text/javascript" src="jquery-3.2.0.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        /*
+         * closet就是向上找，如果自己滿足就返回，如果自己不滿足就繼續向上，
+         * 由於closest可以從自己找，所以closest很適合做事件委派。
+         */
+        // $("#li").closest('ul').css('color', '#f0f');
+        $("#li").closest('li').css('color', '#f0f');
+        /*
+         * 事件委託的原理，此時每個一事件只要被點擊到，他都會冒泡到document去，所以以下事件會被處理，
+         * 在處理時，判斷一下該事件是否是我要處理的對象就可以了。         *
+         */
+        $(document).bind("click", function(event) {
+            var obj = $(event.target).closest(".ccc");
+            if ((obj[0]) == event.target) {
+                alert('abc');
+            }
+        });
+        /* 使用live事件之後，就有效解決了新元素沒有辦法綁定事件的問題 */
+        /* live事件存在的原理是通過事件委託的方式*/
+        /* 事件委託是通過冒泡機制實現的 */
+        /* 對於live而言，就是使用事件委派的方式，但是使用這個方式會帶來如下問題
+            1.每個事件都會冒泡到document，不管你頁面怎麼點都會被執行，需要事件判斷，影像效能
+            2.使用live不支持一些特殊的事件
+            對於live方法而言，提供了第二個參數來說明綁定的上下文
+        */
+        $("#content").append("<div class='ccc'>bbbb</div>")
+
+    });
+    </script>
+</head>
+
+<body id="body">
+    <div id="content">
+        <div class="ccc">aaaaaa</div>
+        <ul>
+            <li>xxxxxxxxxxxxxxxx</li>
+            <li>
+                <ul>
+                    <li>ddddd</li>
+                    <li id="li">abc</li>
+                </ul>
+            </li>
+            <li>rrrrrrrrrrrrrrrrrr</li>
+        </ul>
+    </div>
+</body>
+
+</html>

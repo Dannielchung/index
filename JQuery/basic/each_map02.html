@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="author" content="Admin">
+    <script type="text/javascript" src="jquery-3.2.0.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        var ids = $("tbody td:nth-child(1)");
+        var persons = ids.map(function() {
+            var idn = $(this);
+            var next = idn.nextAll();
+            var name = $(next[0]);
+            var agen = $(next[1]);
+            var pwdn = $(next[2]);
+            var p = {
+                "id": idn.html(),
+                "name": name.html(),
+                "password": pwdn.html()
+            };
+            return p;
+        }).get();
+
+        $(persons).each(function(index, el) {
+            alert(this.id+","+this.name+","+this.password);
+        });
+    });
+    </script>
+</head>
+
+<body>
+    <table width="700" border="1" align="center" id="tus"></table>
+    <table width="700" border="1" align="center" id="users">
+        <thead>
+            <tr>
+                <td>用戶標誌</td>
+                <td>用戶姓名</td>
+                <td>用戶年齡</td>
+                <td>用戶密碼</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr id="abc">
+                <td>1</td>
+                <td>呂布</td>
+                <td>23</td>
+                <td>abc123</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>關羽</td>
+                <td>23</td>
+                <td>123abc</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>趙雲</td>
+                <td>25</td>
+                <td>XXX123</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>典偉</td>
+                <td>26</td>
+                <td>123XXX</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>孔明</td>
+                <td>22</td>
+                <td>597XXX</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>

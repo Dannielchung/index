@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+</head>
+
+<body>
+    <script type="text/javascript">
+    var name = "window";
+    var person = {
+        name:"zhangsan",
+        age:23,
+        say:function(){
+            // that指向Person，如不用此式，則會發生指向window
+             var that = this;
+            return function(){
+                // return this.name;
+                return that.name;
+            }
+        }
+    }
+    alert(person.say()());
+    </script>
+</body>
+
+</html>

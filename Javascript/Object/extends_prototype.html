@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+</head>
+
+<body>
+    <script type="text/javascript">
+    // js實現繼承的第一種方式是基於原型鏈的方式
+    function Parent() {
+        this.pv = "parent";
+        this.color = ["red", "yellow"];
+    }
+    Parent.prototype.pp = "OK";
+    Parent.prototype.showParentValue = function() {
+        alert(this.pv);
+    }
+
+    function Child() {
+        this.cv = "child";
+    }
+
+    /*
+     *使用原型鏈最大的缺點是無法從子類中調用父類構造函數
+     *這樣就沒有辦法把子類的屬性賦值到父類。
+     *第二個缺點是如果父類中有引用類型，此時這個引用類會添加到子類的原型中，
+     *當第一個對象的修改了這個引用之後，其他對象的引用同時修改。
+     */
+
+    // 讓Child的原型鏈指向Parent對象，此時完成了一次繼承
+    // 注意內存模型
+    Child.prototype = new Parent();
+    Child.prototype.showChildValue = function() {
+            alert(this.cv);
+        }
+        // 此時完成對父類對象的覆蓋
+        // 同樣也必須要在繼承之後執行
+    Child.prototype.showParentValue = function() {
+        alert("override parent");
+    }
+
+    // 當執行下面這句話， 意味著Child的原型又被重寫
+    // 這樣就不才在任何繼承關係
+    // Child.prototype = {
+    //     showChildValue: function() {
+    //         alert(this.cv);
+    //     }
+    // }
+    var c = new Child();
+    c.showParentValue(); //parent
+    c.showChildValue(); //child
+    alert(c.pp);
+
+    var c1 = new Child();
+    c1.color.push("blue");
+    alert(c1.color);
+    var c2 = new Child();
+    alert(c2.color);
+    // 在使用原型鏈進行繼承一定要注意以下問題
+    // 1. 不能再設定了原型鏈之後， 再重新為原型鏈賦值
+    // 2. 一定要在原型鏈賦值之後(繼承之後)才能添加或覆蓋方法
+
+    // ＊＊＊＊＊＊一般都不會單純的使用原型來繼承＊＊＊＊＊＊
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+</head>
+
+<body>
+    <script type="text/javascript">
+    //當需要創建一個類的時候，設置類的屬性和方法需要通過this關鍵字來引用，
+    //但是特別注意this關鍵字，在調用時，會根據不同的調用對象變得不同。
+    var color = "red";
+
+    function showColor() {
+        console.log(this.color);
+    }
+    // 創建了一個類，有一個color的屬性和一個show方法。
+    function Circle(color) {
+        this.color = color;
+        this.showColor = showColor;
+    }
+
+   var c = new Circle("yello");
+   // 此時this為c，所以color為yellow
+   c.showColor();
+   // 此時調用的對象等於是window，showColor的this就是window，所以即會找window中的color為red
+   showColor();
+    </script>
+</body>
+
+</html>

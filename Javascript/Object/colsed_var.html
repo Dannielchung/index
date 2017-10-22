@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+</head>
+
+<body>
+    <script type="text/javascript">
+    function fn1() {
+        var fns = new Array();
+        // i這個變量是保存在fn這個作用域
+        for (var i = 0; i < 10; i++) {
+            fns[i] = function() {
+                return i;
+            }
+        }
+        return fns;
+    }
+
+    var fs = fn1();
+    for (var i = 0; i < fs.length; i++) {
+        // 此時通過閉包來調用所有函數，當輸出i的時候會去上一集的作用域查找
+        // 這個時候i的值已經是10了，所以連續輸出10個10
+        document.write(fs[i]() + "<br/>");
+    }
+    </script>
+</body>
+
+</html>

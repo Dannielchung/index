@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>animate demo</title>
+    <style>
+    div {
+        background-color: #bca;
+        width: 100px;
+        border: 1px solid green;
+    }
+    </style>
+    <script type="text/javascript" src="jquery-3.2.0.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        $("#block").css({
+            // "opacity": 0.0,
+            "font-size": "10em",
+            "position": 'relative'
+        });
+        $("#go").click(function() {
+            $("#block").animate({
+                // width: "70%",
+                // opacity: 1.0,
+                // marginLeft: "0.6in",
+                // fontSize: "3em",
+                // borderWidth: "10px",
+                // left: "+50px"
+                width: "toggle",
+                opacity: "toggle"
+            }, 3000);
+        });
+    });
+    </script>
+</head>
+
+<body>
+    <button id="go">&raquo; Run</button>
+    <div id="block">Hello!</div>
+</body>
+
+</html>

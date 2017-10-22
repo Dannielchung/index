@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="author" content="Admin">
+    <script type="text/javascript" src="jquery-3.2.0.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        // if ($.browser.msie) { // alert($.browser.version); // }
+
+        var person = {
+            name: "校長",
+            age: 29,
+        };
+
+        /*
+         *不僅可以遍歷數組，也可以遍歷對象
+         *遍歷數組，只有一個參數
+         *遍歷對象則有鑑值對
+         */
+        $.each(person, function(key, value) {
+            // alert(key + "," + value);
+        })
+
+        var person1 = {
+            name: "校長",
+            age: 29,
+            address: "內湖"
+        };
+        var person2 = {
+            name: "女校長",
+            age: 43
+        };
+
+        /* 會用第二個參數來覆蓋第一個參數，並且返回第一個參數 */
+        // var p = $.extend(person1, person2);
+        //
+
+        /* 此時會把person2的值覆蓋到person1中， 並且儲存到po中，並返回po */
+        var po = new Object();
+        var p = $.extend(po, person1, person2);
+        // alert("person1 : " + person1.name + "," + person1.age + "," + person1.address);
+        // alert("p : " + p.name + "," + p.age + "," + p.address);
+        // alert("po : " + po.name + "," + po.age + "," + po.address);
+        /* extend在寫插件時極為有用 */
+
+        /* grep有兩個參數，第一個表示元素值，第二個表示索引 */
+        // var as = $.grep([1, 2, 3, 4, 5], function(n, i) {
+        //     return n % 2 == 0;
+        // });
+        var as = $.grep($("table tr"), function(n, i) {
+            /* 也可以傳入包裝集 */
+            return $(n).find("td").is(":contains('呂')");
+        });
+        $(as).css("color", "#f00");
+        // alert(as);
+
+        /* 如果找到返回所在下標，如果沒有返回 -1 */
+        // alert($.inArray(23,[1,22,4]));
+
+        /* 轉換成元素數組 */
+        // alert($("table tr").toArray());
+        // alert($.makeArray($("table tr")));
+
+        /* map可遍歷單一數組及物件 */
+        // var ms = $.map([2, 4, 6, 8], function(n) {
+        //     return n * 10;
+        // });
+        // var ms = $.map({name:"aaa",age:11}, function(i,n) {
+        //     alert(i + "," + n );
+        //     // return n * 10;
+        // });
+        // var ms = $.map([{name:"aaa",age:11},{name:"bbb",age:12}], function(i,n) {
+        //     alert(i + "," + n );
+        //     // return n * 10;
+        // });
+        var ms = $.map({name:"aaa",age:113}, function(value,key) {
+            var v = "";
+            if (key == 'name') {
+                v =  "老張";
+                return v;
+            }
+            if (key == 'age') {
+                if (value>100){
+                    v = 99;
+                }
+                return v;
+            }
+        });
+        // alert(ms);
+
+        var a1 = [1,2,3,4];
+        var a2 = [2,2,3,4];
+        // alert($.merge(a1,a2));
+        // alert(a2);
+        // alert(a1);
+
+        /* 刪除數組中相同的元素 */
+        $.unique(a2);
+        // alert(a2);
+
+        var obj = $.parseJSON(`{"name":"John"}`);
+        // alert(obj.name === "John");
+
+        // 頗析對象為unicode參數
+        var params  =  {width:1680,height:1050};
+        var str = $.param(params);
+        alert(str);
+    })();
+    </script>
+</head>
+
+<body>
+    <table width="700" border="1" align="center" id="tus"></table>
+    <table width="700" border="1" align="center" id="users">
+        <thead>
+            <tr>
+                <td>用戶標誌</td>
+                <td>用戶姓名</td>
+                <td>用戶年齡</td>
+                <td>用戶密碼</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr id="abc">
+                <td>1</td>
+                <td>呂布</td>
+                <td>23</td>
+                <td>abc123</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>關羽</td>
+                <td>23</td>
+                <td>123abc</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>趙雲</td>
+                <td>25</td>
+                <td>XXX123</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>典偉</td>
+                <td>26</td>
+                <td>123XXX</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>孔明</td>
+                <td>22</td>
+                <td>597XXX</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>

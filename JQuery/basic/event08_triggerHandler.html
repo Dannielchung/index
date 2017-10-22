@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="author" content="Admin">
+    <script type="text/javascript" src="jquery-3.2.0.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        $("*").not("a[href='ccc']").bind('click', function(event, a, b) {
+            alert(event.isDefaultPrevented());
+            /* 僅僅只會執行一次 */
+            print(event.currentTarget.id + "--" + event.target.id + ":" + (a + b));
+        });
+        $("a[href='ccc']").bind("click", function(event) {
+            /*
+             * 使用triggerHandler帶來的好處有兩個
+             * 1.不冒泡
+             * 2.不提交
+             * 寫事件的時候可以完全按照最正常的方式來寫，不用考慮事件傳遞
+             * 在特殊的使用通過triggerHandler來就會阻止事件傳遞
+             */
+            $("#child").triggerHandler("click", [2, 3]);
+            event.preventDefault();
+        });
+        /* JQuery中的其他很多事件多可以直接通過名稱來完成調用 */
+        $("#child").mouseover(function(event) {
+            /* Act on the event */
+            $(this).css('background', '#000');
+        });
+
+        function print(txt) {
+            $("#content").append(txt + "<br/>");
+        }
+    });
+    </script>
+</head>
+
+<body id="body">
+    <div id="parent">
+        <div id="child">
+            點了看一下
+        </div>
+    </div>
+    <a href="ccc">abc</a>
+    <div id="content">
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<!-- reload -->
+	<script type="text/javascript">
+		function sum(num1,num2){
+
+		}
+
+		function sum(num1){
+			return num1+100;
+		}
+
+		var fn = new Function("num1","num2","console.log(num1+num2)");
+		fn(12,22);
+
+		console.log(sum(19));
+		console.log(sum(19,20));
+	</script>
+</head>
+<body>
+	<!-- 函數對象調用方式 -->
+	<script type="text/javascript">
+		function callFun(fun,arg){
+			return fun(arg);
+		}
+
+		function say(str){
+			alert("Hello");
+		}
+
+		function sum(num){
+			return num+100;
+		}
+
+		callFun(say,"Leon");
+		alert(callFun(sum,20));
+
+		function fn1(arg){
+			var rel =  function(num){
+				return arg+num;
+			}
+			return rel;
+		}
+
+		var f = fn1(20);
+		alert(f(10));
+
+	</script>
+</body>
+</html>

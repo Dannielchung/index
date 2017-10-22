@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="author" content="Admin">
+    <style>
+    .bgc {
+        background: #f00;
+        color: #fff;
+    }
+    </style>
+    <script type="text/javascript" src="jquery-3.2.0.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        /* 第二個參數可以指定相應的上下文，說明事件委派的根對象是什麼 */
+
+        // $(".ccc", "#content").live("click", function(event) {
+        //     alert($(this).html());
+        // });
+
+        /* live已被停用改以on方式替代 */
+        $('#content').on('click', '.ccc', function() {
+            alert($(this).html());
+        });
+
+        /* 使用live事件之後，就有效解決了新元素沒有辦法綁定事件的問題 */
+        /* live事件存在的原理是通過事件委託的方式*/
+        /* 事件委託是通過冒泡機制實現的 */
+        $("#content").append("<div class='ccc'>bbbb</div>")
+        $("#abc").append("<div class='ccc'>bbbb</div>")
+    });
+    </script>
+</head>
+
+<body id="body">
+    <div id="content">
+        <div class="ccc">aaaaaa</div>
+    </div>
+    <div id="abc"></div>
+</body>
+
+</html>

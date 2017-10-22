@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+</head>
+
+<body>
+    <script type="text/javascript">
+    // 原型創建方式，可以基於原型的創建可以將屬性和方法設置為Person專有的，不能在通過window來調用。
+    function Person() {}
+    Person.prototype.name = "Leon";
+    Person.prototype.age = 23;
+    Person.prototype.say = function() {
+        alert(this.name + "," + this.age);
+    }
+
+    // 使用以上方式來編寫代碼，當屬性及方法多時，邊寫起來不是很方便，可以通過json的格式來編寫
+    // 以下方式將會重寫原型
+    Person.prototype = {
+    	constructor:Person,  //手動指定constructor
+        name: "Leon",
+        age: 23,
+        say: function() {
+            alert(this.name + "," + this.age);
+        }
+    }
+    var p1 = new Person();
+    Person.prototype.sayHi = function(){
+    	alert(this.name+":hi");
+    }
+    p1.sayHi();
+    //構造函數不等
+    alert(p1.constructor == Person); //false
+    // 由於原型重寫，而且沒有通過Person.prototype來指定，
+    // 此時的constructor不會指向Person，而是指向Object
+    // 如果constructor真的比較重要，可以在json中指定
+    </script>
+</body>
+
+</html>

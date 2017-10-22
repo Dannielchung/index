@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+</head>
+
+<body>
+    <script type="text/javascript">
+    function createPerson(name, age) {
+        var o = new Object();
+        o.name = name;
+        o.age = age;
+        o.say = function() {
+            alert(this.name + "," + this.age);
+        }
+        return 0;
+    }
+    var p1 = createPerson("Leon",22);
+    var p2 = createPerson("Ada",33);
+    p1.say();
+    p2.say();
+    alert(typeof p1);
+    </script>
+</body>
+
+</html>

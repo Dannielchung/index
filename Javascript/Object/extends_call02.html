@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+</head>
+
+<body>
+    <script type="text/javascript">
+    // js實現繼承的第一種方式是基於原型鏈的方式
+    function Parent(name) {
+        this.color = ["red", "blue"];
+        this.name = name;
+        this.say = function() {
+            alert(this.name);
+        }
+    }
+
+    // 由於使用偽造的方式，不會完成Child的原型指向Parent，所以say方法不存在
+    // ，解決方法是，將這個方法放置到Parent中使用this來創建，
+    // 但是此時每個對象又存在各個say，這樣空間又佔用太大，所以也不會單獨使用偽造方式實現繼承
+
+    // Parent.prototype.say = function() {
+    //     alert(this.name);
+    // }
+
+    function Child(name, age) {
+        this.age = age;
+        // 在Child中的this應該是指向Child的對象
+        // 當調用Parent方法的時候，而且this又是指向了Ｃhild
+        // 此時就等於在這裡完成this.color= ["red","blue"];
+
+        // 也就等於在Child中有了this.color屬性，這樣也就 *** 變像完成了繼承 ***
+        Parent.call(this, name);
+
+        // 使用偽造的方式就可以把子類的構造函數參數傳遞到父類中
+    }
+
+    var c1 = new Child("Leon", 12);
+    c1.color.push("green");
+    alert(c1.color);
+
+    var c2 = new Child("Ada", 22);
+    alert(c2.color);
+
+    alert(c1.name + "," + c1.age);
+    alert(c2.name + "," + c2.age);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,21 @@
+$list: red orange yellow green grey blue purple black;
+$len: length($list);
+$width: percentage(1 / $len);
+@for $i from 1 through $len {
+    .test .color#{$i} {
+        width: $width;
+        background-color: nth($list, $i);
+        height: 10px;
+        float: left;
+    }
+}
+
+.test {
+    width: 100%;
+}
+
+.test2 {
+    height: 10px;
+    width: 100%;
+    background-image: linear-gradient(to right, red 0%, red $width, orange $width, orange $width * 2);
+}

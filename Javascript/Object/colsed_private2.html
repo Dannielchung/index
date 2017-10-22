@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+</head>
+
+<body>
+    <script type="text/javascript">
+    var Person;
+    // name正在函數結束之後就消失，在外面是無法引用的
+    (function() {
+        var name = "";
+        Person = function(value) {
+            name = value;
+        }
+        Person.prototype.setName = function(value) {
+            name = value;
+        }
+        Person.prototype.getName = function() {
+            return name;
+        }
+    })();
+
+
+    var p = new Person("aa");
+    alert(p.getName());
+    p.setName("bb");
+    alert(p.getName());
+    </script>
+</body>
+
+</html>

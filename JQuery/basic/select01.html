@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="author" content="Admin">
+    <script type="text/javascript" src="jquery-3.2.0.js"></script>
+    <script type="text/javascript">
+    $(function() {
+
+
+        // $('li a').css('color','#f00');
+        // $(".myList > li > a").css("color", "#f00");
+        // $("a[href^='http://']").css("color", "#fff").css("background", "#00f"); // $(".myList ul li:has('a')").css('background', '#ff0'); // $("a[href$='pdf']").css('background', '#0f0').css("color", "#ff0");
+
+        // 僅僅只會取相鄰的下一個節點
+        // $("#li1+li").css('background','#B12');
+
+        //所有滿足條件的兄弟下一個節點。
+        // $("#li1~li").css('background', '#B12');
+        //
+
+        // $("a[title]").css('color', '#0f0');
+        // 頁面中最新匹配的某個元素
+        // alert($("li:first").html());
+        // alert($("li:last").html());
+        //
+        alert($(".myList>li li:first-child").css("color", "#f00"));
+
+        // 獲取沒有兄弟節點的ul
+        alert($("ul:only-child").length);
+
+    });
+    </script>
+</head>
+
+<body>
+    <ul class="myList">
+        <li>
+            <a href="http://jquery.com">JQuery site</a>
+            <ul>
+                <li><a href="css1.txt" title="mycss">CSS1</a></li>
+                <li id="li1"><a href="css2.pdf" title="css2">CSS2</a></li>
+                <div>dddd</div>
+                <li><a href="css3.html" title="this is my">CSS3</a></li>
+                <li>Basic Path</li>
+            </ul>
+        </li>
+        <li>JQuery also support
+            <ul>
+                <li>Custom selector</li>
+                <li>Form selector</li>
+            </ul>
+        </li>
+    </ul>
+</body>
+
+</html>

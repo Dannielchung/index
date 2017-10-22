@@ -1,0 +1,39 @@
+@charset "UTF-8";
+@import url(css.css);
+@import "http://sss/xx";
+@import url(css.css);
+/* line 2, ../sass/_part.scss */
+header {
+  font-family: 微軟;
+}
+
+/* line 5, ../sass/_part.scss */
+body {
+  color: red;
+}
+
+/* line 12, ../sass/1.scss */
+body {
+  color: red;
+  font-size: 14px;
+  padding: 3px 10px 5px 10px;
+  padding-left: 3px;
+}
+
+/* line 19, ../sass/1.scss */
+footer {
+  color: red;
+  background-color: red;
+  border-color: blue;
+}
+
+/* line 24, ../sass/1.scss */
+.className {
+  width: 50px;
+  height: 30px;
+}
+
+/* line 31, ../sass/1.scss */
+.text-info {
+  color: lightgreen;
+}

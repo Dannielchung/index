@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="author" content="Admin">
+    <script type="text/javascript" src="jquery-3.2.0.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        /* DOM2之後，可以滿足事件的覆蓋了，而且還提供了一個參數用來說明是進行事件冒泡還是捕獲 */
+        $("#child")[0].addEventListener("click", function(){
+            print("abc");
+        });
+       $("#child")[0].addEventListener("click", function(){
+            print("bcd");
+         });
+        $("#child")[0].addEventListener("click", function(){
+            print("efg");
+         });
+        $("#child")[0].addEventListener("click", function(){
+            print("ijk");
+         });
+
+        function print(txt) {
+            $("#content").append(txt + "<br/>");
+        }
+    });
+    </script>
+</head>
+
+<body id="body">
+    <div id="parent">
+        <div id="child">
+            點了看一下
+        </div>
+    </div>
+    <div id="content">
+    </div>
+</body>
+
+</html>

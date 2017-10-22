@@ -1,0 +1,73 @@
+.banner {
+    margin: 0;
+    @include padding-leader(0.5);
+    .site-brand {
+        @include span(3);
+        text-align: left;
+        margin: 0;
+        img {
+            height: 96px;
+            @include breakpoint($screen-xs) {
+                height: 48px;
+            }
+        }
+    }
+    .navigation {
+        @include span(9);
+        text-align: right;
+        ul {
+            margin: 0;
+            li {
+                list-style: none;
+                display: inline-block;
+                line-height: 96px;
+            }
+        }
+        a {
+            padding: 0.75em 1em;
+            color: #c69;
+            text-transform: uppercase;
+            text-decoration: none;
+            font-weight: 600;
+            &:visited {
+                color: #b37399;
+            }
+            &:focus,
+            &:hover {
+                color: #036;
+            }
+        }
+        @include breakpoint($screen-xs) {
+            display: none;
+        }
+    }
+    .container{
+    	position: relative;
+    }
+    .banner-toggle {
+        display: none;
+        position: absolute;
+        top: 0;
+        right: 16px;
+        button{
+        	border: none;
+        	background: transparent;
+        	cursor: pointer;
+        	width: 48px;
+        	height: 48px;
+        }
+        .icon-bar {
+            margin-top: 6px;
+            margin-bottom: 6px;
+            display: block;
+            margin-right: auto;
+            margin-left: auto;
+            width: 32px;
+            height: 2px;
+            background-color: #c69;
+        }
+        @include breakpoint($screen-xs) {
+            display: block;
+        }
+    }
+}

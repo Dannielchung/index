@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="author" content="Admin">
+    <style type="text/css">
+    .addBg {
+        background: #f00;
+        color: #fff;
+    }
+
+    .bigger {
+        front-size: 20px;
+    }
+    </style>
+    <script type="text/javascript" src="jquery-3.2.0.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        $("#d1").html($('#d2').html());
+        // text方法僅僅只是獲取文本，而不會獲取標籤訊息
+        $('#d1').html($('#d2').text());
+
+    });
+    </script>
+</head>
+
+<body>
+    <div id="d1">第一個div</div>
+    <div id="d2">
+        <ul>
+            <li>八戒</li>
+            <li>悟空</li>
+            <li>悟淨</li>
+        </ul>
+    </div>
+</body>
+
+</html>

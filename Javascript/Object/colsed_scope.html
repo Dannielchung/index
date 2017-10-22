@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	// 進行函式調用時，會為每一個函式增加一個scope屬性，通過這個屬性來指向一塊內存，
+	// 這塊內存中包含有所有的上下文使用的變量，當在某個函數中，調用了新函數依然會有一個作用域
+	// 來執行原有的函數的scope和自己新增加的scope，這樣就形成一個鏈結結構，這就是js中的作用域鏈。
+	var color = "red";
+	var showColor = function(){
+		alert(this.color);
+	}
+
+	function changeColor(){
+		var anotherColor = "blue";
+		function swapColor(){
+			var tempColor(){
+				var tempColor = anotherColor;
+				anotherColor = color;
+				color = tempColor;
+			}
+			swapColor();
+		}
+	}
+
+	changeColor();
+	showColor();
+
+</script>
+</body>
+</html>

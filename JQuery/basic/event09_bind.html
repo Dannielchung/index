@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="author" content="Admin">
+    <style>
+    .bgc {
+        background: #f00;
+        color: #fff;
+    }
+    </style>
+    <script type="text/javascript" src="jquery-3.2.0.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        /* 通過空格綁定多個事件 */
+        $("#child").bind("mouseover.test mouseout.test", function(event) {
+            $(this).toggleClass('bgc');
+        });
+        /* 取消事件 */
+        $("#child").unbind('mouseout');
+        /* 可以為一組事件增加一個命名空間，在事件之後通過.來增加，在移除事件的時候，可以直接通過命名空間一起移除 */
+        $("a[href='ccc']").bind("click.test", function(event) {
+            print("a");
+            event.preventDefault();
+        });
+        /* 移除一組事件 */
+        $("*").unbind('.test');
+
+        function print(txt) {
+            $("#content").append(txt + "<br/>");
+        }
+    });
+    </script>
+</head>
+
+<body id="body">
+    <div id="parent">
+        <div id="child">
+            點了看一下
+        </div>
+    </div>
+    <a href="ccc">abc</a>
+    <div id="content">
+    </div>
+</body>
+
+</html>

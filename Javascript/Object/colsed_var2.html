@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+</head>
+
+<body>
+    <script type="text/javascript">
+    function fn1() {
+        var fns = new Array();
+        // i這個變量是保存在fn這個作用域
+        for (var i = 0; i < 10; i++) {
+            // 將num這個變量是保存在tf這個作用域中，每一個閉包的num都是唯一的
+            var tf = function(num){
+                fns[num] =  function(){
+                    return num;
+                }
+            }
+            tf(i);
+        }
+        return fns;
+    }
+
+    var fs = fn1();
+    for (var i = 0; i < fs.length; i++) {
+        // 每一個fs都是在不同的作用域鏈中，num也保存在不同的作用域中，所以輸出0-9
+        document.write(fs[i]() + "<br/>");
+    }
+    </script>
+</body>
+
+</html>

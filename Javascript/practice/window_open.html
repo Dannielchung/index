@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+</head>
+
+<body>
+    <div id="welcome">歡迎進入我們的網站</div>
+    <a href="#" onclick="window.open('test01.html','aaa','width=300,height=300,resizable=no')">test01</a>
+    <br/>
+    <a href="#" onclick="window.open('test02.html','aaa','width=400,height=400,resizable=no')">test02</a>
+    <script type="text/javascript">
+    setTimeout("endWelcome()", 5000);
+
+    function endWelcome() {
+        document.getElementById("welcome").style.display = "none";
+    }
+
+    </script>
+
+    <a onclick="javascript:window.open('bless.html','aaa','width=600,height=400,resizable=no')" href="#">
+    選擇性別
+    </a>
+    <a onclick="javascript:window.open('bless.html','aaa','width=600,height=400,resizable=no')" href="#">
+    輸入你的祝福語
+    </a>
+    <div id="bless"></div>
+</body>
+
+</html>

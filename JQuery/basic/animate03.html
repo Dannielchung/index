@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>animate demo</title>
+    <style>
+    div {
+        border: 1px solid green;
+    }
+    </style>
+    <script type="text/javascript" src="jquery-3.2.0.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        function change() {
+            var ele = $("#imgElement img");
+            if (ele.attr("src") == "01.jpg") {
+                ele.attr("src", "02.jpg")
+                    .css('opacity', '0.0')
+                    .animate({
+                        opacity: 1.0
+                    }, 2000,function(){
+                        $("#content").append("02");
+                    });
+            } else {
+                ele.attr("src", "01.jpg")
+                    .css('opacity', '0.0')
+                    .animate({
+                        opacity: 1.0
+                    }, 2000);
+            }
+        }
+        setInterval(change, 3000);
+
+        // $("#imgElement img").css({
+        //     // "opacity": 0.0,
+        //     "font-size": "10em",
+        //     "position": 'relative'
+        // });
+        // $("#imgElement img").click(function() {
+        //     if ($(this).attr("src") == "01.jpg") {
+        //         $(this).attr("src", "02.jpg")
+        //             .css('opacity', '0.0')
+        //             .animate({
+        //                 opacity: 1.0
+        //             }, 5000);
+        //     }
+        //     else{
+        //          $(this).attr("src", "01.jpg")
+        //             .css('opacity', '0.0')
+        //             .animate({
+        //                 opacity: 1.0
+        //             }, 5000);
+        //     }
+
+        // });
+    });
+    </script>
+</head>
+
+<body>
+    <div id="content"></div>
+    <div id="imgElement">
+        <img src="01.jpg" alt="測試" />
+        <!-- <img src="02.jpg" alt=""/> -->
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        <script type="text/javascript">
+        </script>
+    </title>
+</head>
+
+<body>
+    <script type="text/javascript">
+    function clickD(obj) {
+        alert(obj.innerHTML);
+    }
+
+    function mouseD(obj) {
+        obj.style.color = "#f00";
+        obj.style.fontSize = "18px";
+    }
+
+    function outD(obj) {
+        obj.style.color = "#000";
+        obj.style.fontSize = "10px";
+    }
+    with(document) {
+        write("aaa<br/>");
+        write("bbb<br/>");
+        write("ccc<br/>");
+    }
+    </script>
+    <div onclick="clickD(this)" style="cursor: pointer">
+        點擊了試一下</div>
+    <div onmouseover="mouseD(this)" onmouseout="outD(this)">鼠標移動來試試</div>
+    <script type="text/javascript">
+    var big = true;
+    function bigger(obj) {
+        var cs = parseInt(obj.style.fontSize);
+        if (cs) {
+            if (cs >= 30) {
+                big = false;
+            }
+            if (cs <= 5) {
+                big = true;
+            }
+            if(big){
+            	cs+=2;
+            }
+            else{
+            	cs-=2;
+            }
+
+            obj.style.fontSize = cs + "px";
+        } else {
+            obj.style.fontSize = "14px";
+        }
+    }
+    </script>
+    <div onclick="bigger(this)" style="cursor: pointer">點擊變大</div>
+</body>
+
+</html>

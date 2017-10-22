@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="author" content="Admin">
+    <style>
+    #parent1,
+    #parent2 {
+        height: 200px;
+        width: 400px;
+        background: #8e7;
+        color: #fff;
+        margin: 40px;
+    }
+
+    #child1,
+    #child2 {
+        height: 60px;
+        width: 150px;
+        background: #843;
+        position: relative;
+        left: 30px;
+        top: 30px;
+    }
+    </style>
+    <script type="text/javascript" src="jquery-3.2.0.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        // $("#parent1").on("mouseover mouseout",function(event){
+        //     print(event.type + "," + this.id);
+        // });
+        // $("#child1").on("mouseover mouseout",function(event){
+        //     print(event.type + "," + this.id);
+        // });
+
+        /* 在JQuery中通常建議使用mouseenter和mouseleave來代替mouseover和mouseout，可以阻止事件冒泡
+        如果從父類移到子類依然也會得到一個父類mouseout事件，很多時候這種處理是不需要的，所以在JQuery中通過mouseenter和mouseleave*/
+        $("#parent2").on("mouseenter mouseleave", function(event) {
+            print(event.type + "," + this.id);
+        });
+        $("#child2").on("mouseenter mouseleave", function(event) {
+            print(event.type + "," + this.id);
+        });
+
+        $('#parent1').hover(function(event) {
+            print(event.type + "," + this.id);
+        }, function(event) {
+            print(event.type + "," + this.id);
+        });
+
+        /* 使用hover可以有效地實現mouseenter和mouseleave的輪換 */
+        $('#child1').hover(function(event) {
+            print(event.type + "," + this.id);
+        }, function(event) {
+            print(event.type + "," + this.id);
+        });
+
+        function print(text) {
+            $("#content").append(text + "</br>");
+        }
+    });
+    </script>
+</head>
+
+<body id="body">
+    <div id="parent1">
+        parent1
+        <div id="child1">child1</div>
+    </div>
+    <div id="parent2">
+        parent2
+        <div id="child2">child2</div>
+    </div>
+    <div id="content"></div>
+</body>
+
+</html>

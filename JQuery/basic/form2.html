@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="author" content="Admin">
+    <script type="text/javascript" src="jquery-3.2.0.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        $("#all").click(function() {
+            if ($(this).prop("checked")) {
+                // 選中
+                $("input[type='checkbox']").prop("checked", true);
+                $(this).next("span").html("全選");
+            } else {
+                $("input[type='checkbox']").prop("checked", false);
+                $(this).next("span").html("全取消");
+            }
+        });
+        $("#reverse").click(function(){
+            // 先得到全選中的項目
+            var c = $("input[type='checkbox']:not(#all):checked");
+            var nc = $("input[type='checkbox']:not(#all):not(:checked)");
+            c.prop("checked",false);
+            nc.prop("checked",true);
+        });
+    });
+    </script>
+</head>
+
+<body>
+    <input type="checkbox" name="">
+    <input type="checkbox" name="">
+    <input type="checkbox" name="">
+    <input type="checkbox" name="">
+    <input type="checkbox" name="">
+    <input type="checkbox" name="">
+    <input type="checkbox" name="">
+    <input type="checkbox" name="">
+    <input type="checkbox" name="">
+    <input type="checkbox" name="">
+    <br/>
+    <input type="checkbox" id="all" />
+    <span>全選</span>
+    <input type="button" id="reverse" value="反選">
+</body>
+
+</html>

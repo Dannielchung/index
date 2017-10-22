@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+</head>
+
+<body>
+    <script type="text/javascript">
+     // 以下等於為String擴展了一個trim方法來去除空格
+    String.prototype.trim= function() {
+    	//js的正則表達式和java很類似，區別就是js是使用//
+    	return this.replace(/(^\s+)|(\s+$)/g,"");
+    }
+    var str = "   aaa   ";
+    alert("|"+str.trim()+"|")
+    </script>
+</body>
+
+</html>

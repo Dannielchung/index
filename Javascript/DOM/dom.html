@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <script type="text/javascript">
+    function getPwd() {
+        var pwd = document.getElementById('pwd');
+        console.log(pwd.value);
+        var pc = document.getElementById("showPwd");
+        pc.innerHTML = pwd.value;
+    }
+
+    function getUsers() {
+        var users = document.getElementsByName('users');
+        for (var i = 0; i < users.length; i++) {
+            console.log(users[i].value);
+        }
+    }
+
+    function getInputs() {
+        var is = document.getElementsByTagName('input');
+        for (var i = 0; i < is.length; i++) {
+            console.log(is[i].value);
+        }
+    }
+
+    function getAllH1() {
+        var ah = document.getElementsByTagName("h1");
+        for (var i = 0; i < ah.length; i++) {
+            console.log(ah[i].innerHTML);
+            console.log(ah[i].nodeName);
+            console.log(ah[i].nodeType);
+            console.log(ah[i].nodeValue);
+            console.log(ah[i].firstChild.nodeValue);
+
+        }
+    }
+
+    function getConH1() {
+        var con = document.getElementById('content');
+        var h2 = con.getElementsByTagName('h2'); //為數組
+
+        console.log(h2[0].innerHTML);
+        var pn =  h2[0].parentNode;
+        var h3 = pn.getElementsByTagName('h3')[0];
+        var s = h3.getElementsByTagName('span')[0];
+        console.log(s.innerHTML);
+        }
+    </script>
+</head>
+
+<body>
+    <input type="text" name="users" />
+    <input type="text" name="users" />
+    <input type="text" name="users" />
+    <input type="text" name="users" />
+    <input type="text" name="users" />
+    <br/>
+    <input type="password" id="pwd" />
+    <br/>
+    <input type="button" value="users" onclick="getUsers()" />
+    <input type="button" value="pwd" onclick="getPwd()" />
+    <input type="button" value="Input" onclick="getInputs()" />
+    <br/>
+    <div id="showPwd"></div>
+    <div id="content">
+        <h1>aaaa<span>aaaassss</span></h1>
+        <h2>bbbb<span>bbbbssss</span></h2>
+        <h3>cccc<span>ccccssss</span></h3>
+    </div>
+    <h1>hhhhhhbbbbbb1<span>hhhhhhhhbbbbbbbaaaaaassssss</span></h1>
+    <h2>hhhhhhhhhsasasasassaaas<span>hhhhhhhaheeeeeeeeeeeddddddddd</span></h2>
+    <h3>hhhhhhhhhhhhjkkkkkkkkkkkkksssssss<span>kkkkkkkkkkkkkksaasassasassasasasssas</span></h3>
+    <input type="button" value="獲取所有的h1" onclick="getAllH1()" />
+    <input type="button" value="獲取content所有的h1" onclick="getConH1()"/>
+</body>
+
+</html>

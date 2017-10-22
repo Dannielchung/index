@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+    </title>
+</head>
+<body>
+    <!-- 背景逐漸漸層 -->
+    <script type="text/javascript">
+    var x = 0;
+    var fade = function(node) {
+        var level = 1;
+        var step = function() {
+            var hex = level.toString(16);
+            node.style.backgroundColor = '#FFFF' + hex + hex;
+            if (level < 15) {
+                level += 1;
+                setTimeout(step, 100);
+                console.log("inside");
+            }
+        };
+        console.log("outside");
+        setTimeout(step, 100);
+    };
+    fade(document.body);
+    </script>
+</body>
+</html>
+<!-- 創立建構式 -->
+<script type="text/javascript">
+var Quo = function(string) {
+    this.status = string;
+};
+Quo.prototype.get_status = function() {
+    return this.status;
+}
+var myQuo = new Quo("confused");
+document.writeln(myQuo.get_status());
+</script>
+<!-- closure方式創立建構式 -->
+<script type="text/javascript">
+var quo = function(status) {
+    return {
+        get_status: function() {
+            return status;
+        }
+    };
+};
+var myQuo = quo("amazed");
+document.writeln(myQuo.get_status());
+</script>

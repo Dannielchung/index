@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="author" content="Admin">
+    <style type="text/css">
+    input {
+        margin: 10px;
+    }
+    </style>
+    <script type="text/javascript" src="jquery-3.2.0.js"></script>
+    <script type="text/javascript" src="jquery-migrate-1.4.1.js"></script>
+    <script type="text/javascript" src="jquery.util.topic.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        /*
+            jQuery 有2个 .toggle()，1个是切换显示或隐藏，另外一个是切换2-3个 functions。但是在 jQuery 1.9 版他们移除了 toggle event。
+            经过搜索一下，找到2个答案：
+            1）使用 jQuery 的迁移插件( jQuery Migrate plugin on Github)
+            2）使用 dataset
+        */
+
+        // keyup event
+        $("#homeAddress,#homePhone").on('keyup', function() {
+            $("#sendAddress").val($("#homeAddress").val());
+            $("#sendPhone").val($("#homePhone").val());
+        });
+
+        // change event
+        $("#homeAddress,#homePhone").on('change', function() {
+            $("#sendAddress").val($("#homeAddress").val());
+            $("#sendPhone").val($("#homePhone").val());
+        });
+
+        $("#sameHome").click(function(event) {
+            var isc = $(this).prop("checked");
+            if (isc) {
+                $("#sendAddress").val($("#homeAddress").val());
+                $("#sendPhone").val($("#homePhone").val());
+            }
+            else {
+                $("#sendAddress").val("");
+                $("#sendPhone").val("");
+            }
+            $("#send input").setReadOnly(isc);
+        });
+
+        $($("#homeAddress"))
+
+        // $('#btn').on('click', function() {
+        //     if (!$(this).attr('data-toggled') || $(this).attr('data-toggled') == 'on') {
+        //         $(this).attr('data-toggled', 'off');
+        //         // do stuff when on
+        //         $("input").setReadOnly(true);
+        //     } else if ($(this).attr('data-toggled') == 'off') {
+        //         $(this).attr('data-toggled', 'on');
+        //         // do stuff when off
+        //         $("input").setReadOnly(false);
+        //     }
+        // });
+    });
+    </script>
+</head>
+
+<body>
+    <fieldset>
+        <legend>請填入地址</legend>
+        <div id="home">
+            <h3>輸入家庭地址</h3> 地址：
+            <input type="text" name="homeAddress" id="homeAddress" size="40" />
+            <br/> 電話：
+            <input type="text" name="homePhone" id="homePhone" size="40" />
+            <br/>
+        </div>
+        <div id="send">
+            <h3>輸入郵寄地址</h3>
+            <input type="checkbox" id="sameHome" /> 是否和家庭地址一樣
+            <br/> 地址：
+            <input type="text" name="sendAddress" id="sendAddress" size="40" />
+            <br/> 電話：
+            <input type="text" name="sendPhone" id="sendPhone" size="40" />
+            <br/>
+        </div>
+    </fieldset>
+</body>
+
+</html>

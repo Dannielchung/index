@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="author" content="Admin">
+    <style type="text/css">
+    .addBg {
+        background: #f00;
+        color: #fff;
+    }
+
+    .bigger {
+        front-size: 20px;
+    }
+    </style>
+    <script type="text/javascript" src="jquery-3.2.0.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        $('#btn').click(function(){
+            /* 獲取表單的值 */
+            // alert($('#username').val());
+
+            /* 設置表單的值 */
+            // $('#username').val('我來了');
+
+            // alert($("input[name='password']").val());
+
+            /* checkbox得到的是一個數組，需要進行遍歷 */
+            // $("input[name='interest']:checked").each(function(n){
+            //     alert($(this).val());
+            // });
+
+            /* checkbox只能傳入數組 */
+            // $("input[name='interest']").val(['籃球',"羽毛球"]);
+
+            /* 選中radio方式 */
+            // alert($("input[name='sex']:checked").val());
+            // $("input[name='sex']").val(['1']);
+            // $("input[name='sex'][value='1']").attr("checked","checked");
+            // $("input[name='sex'][value='1']").prop("checked","true");
+
+            /* 能夠獲取select的值 */
+            // alert($('#address').val());
+
+            /* 獲取select中的所有文本 */
+            // alert($('#address').text());
+
+            /* 獲取select中被選中的值 注意address後面要有"空格" 不然會找select被checked的元素 加個空格就是找子元素 */
+            // alert($("#address :checked").text());
+
+            /* 設置select的值 */
+            $("#address").val(2);
+
+            // 寫一個方法可以將表單中的值創建為json --> 直接創建為字符串。
+
+        });
+    });
+    </script>
+</head>
+
+<body>
+    <form id="myform">
+        用戶名：<input type="text" name="username" id="username"/><br/>
+        密碼：<input type="password" name="password" id="password"/><br/>
+        用戶興趣：
+        <input type="checkbox" name="interest" value="足球"/>足球
+        <input type="checkbox" name="interest" value="籃球"/>籃球
+        <input type="checkbox" name="interest" value="羽毛球"/>羽毛球
+        <input type="checkbox" name="interest" value="游泳"/>游泳 <br/>
+        用戶性別：
+        <input type="radio" name="sex" value="0">男
+        <input type="radio" name="sex" value="1">女 <br/>
+
+        用戶戶籍：
+        <select name="address" id="address">
+            <option value="1">台北</option>
+            <option value="2">新北</option>
+            <option value="3">桃園</option>
+            <option value="4">台中</option>
+        </select><br/>
+        <input type="button" value="測試數據" name="submit" id="btn"/>
+    </form>
+</body>
+
+</html>

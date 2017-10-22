@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="author" content="Admin">
+    <script type="text/javascript" src="jquery-3.2.0.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        $("#child").bind('click', function(event) {
+            /* 使用JQUERY 把瀏覽器之間的問題全部屏蔽掉了 事件模型為DOM2*/
+            // alert(event.target);
+        });
+        /* 使用JQuery可以有效地通過第二個參數來傳遞相應的JSON參數。*/
+        $("#child").bind('click', {
+            "name": "Danniel",
+            "age": 12
+        }, function(event) {
+            /* 使用JQUERY 把瀏覽器之間的問題全部屏蔽掉了 事件模型為DOM2*/
+            print(event.data.name);
+        });
+
+        function print(txt) {
+            $("#content").append(txt + "<br/>");
+        }
+    });
+    </script>
+</head>
+
+<body id="body">
+    <div id="parent">
+        <div id="child">
+            點了看一下
+        </div>
+    </div>
+    <div id="content">
+    </div>
+</body>
+
+</html>
